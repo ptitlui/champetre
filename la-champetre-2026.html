@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Champêtre 2026 — Inscription</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Fraunces:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --g1:#2d5a1b; --g2:#3e7a26; --g3:#5fa035; --g4:#8cc45a; --g5:#c4e08a; --g6:#e8f5d0;
+  --a1:#c4780a; --a2:#e89420; --a3:#f5b840;
+  --r1:#c43820; --r2:#e05030;
+  --cream:#f8f3e8; --paper:#fffdf7; --sand:#f0e8d0;
+  --ink:#1a2010; --ink2:#3a4830; --ink3:#6a7860;
+  --night1:#12203a; --night2:#1e3050; --night3:#2a4068;
+  --star:#ffd060;
+  --radius:16px; --radius-sm:10px; --radius-lg:24px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;}
+
+/* ═══════════════════════════════════════════
+   INTRO
+═══════════════════════════════════════════ */
+#intro{
+  position:fixed;inset:0;z-index:1000;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  cursor:pointer;overflow:hidden;
+  background:linear-gradient(160deg, var(--g1) 0%, var(--g2) 55%, var(--g3) 100%);
+  transition:opacity 1.2s ease;
+}
+#intro.out{opacity:0;pointer-events:none;}
+
+/* floating shapes deco */
+.intro-shape{position:absolute;border-radius:50%;opacity:0.12;}
+.is1{width:300px;height:300px;background:var(--g4);top:-80px;right:-60px;}
+.is2{width:200px;height:200px;background:var(--a3);bottom:-50px;left:-40px;}
+.is3{width:120px;height:120px;background:var(--g5);bottom:80px;right:10%;}
+.is4{width:80px;height:80px;background:var(--a2);top:15%;left:8%;}
+
+.i-content{position:relative;z-index:2;text-align:center;padding:0 24px;}
+
+.i-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.15);
+  color:rgba(255,255,255,0.9);
+  padding:8px 20px;border-radius:50px;
+  font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:24px;
+  opacity:0;animation:fadeup .8s ease forwards .3s;
+}
+.i-title{
+  font-family:'Fraunces',serif;font-weight:900;
+  font-size:clamp(64px,13vw,148px);
+  color:#fff;line-height:.95;
+  margin-bottom:10px;
+  opacity:0;animation:fadeup 1s ease forwards .6s;
+}
+.i-sub{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:700;
+  font-size:clamp(16px,3vw,30px);
+  color:rgba(255,255,255,0.75);
+  margin-bottom:36px;
+  opacity:0;animation:fadeup .8s ease forwards .9s;
+}
+.i-dots{
+  display:flex;align-items:center;gap:8px;justify-content:center;
+  margin-bottom:32px;
+  opacity:0;animation:fadeup .7s ease forwards 1.1s;
+}
+.i-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.4);}
+.i-dot.big{width:8px;height:8px;background:rgba(255,255,255,0.8);}
+.i-hint{
+  font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,0.45);
+  opacity:0;animation:fadeup .7s ease forwards 1.4s, blink 2.5s ease-in-out infinite 2s;
+}
+@keyframes blink{0%,100%{opacity:.3}50%{opacity:.8}}
+@keyframes fadeup{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ═══════════════════════════════════════════
+   GLOBAL
+═══════════════════════════════════════════ */
+.wrap{max-width:780px;margin:0 auto;position:relative;z-index:2;padding:0 20px;}
+
+.pill{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 16px;border-radius:50px;
+  font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+}
+.pill-green{background:var(--g5);color:var(--g1);}
+.pill-amber{background:#fde8b0;color:var(--a1);}
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero{
+  position:relative;
+  background:var(--g6);
+  overflow:hidden;
+  padding:72px 24px 0;
+  text-align:center;
+}
+
+/* big circle deco behind title */
+.hero-circle{
+  position:absolute;
+  width:600px;height:600px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.35);
+  top:50%;left:50%;
+  transform:translate(-50%,-55%);
+  pointer-events:none;
+}
+
+.hero-eyebrow{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  margin-bottom:16px;
+}
+.hero-line{height:1.5px;width:40px;background:var(--g3);border-radius:2px;}
+
+.hero-title{
+  font-family:'Fraunces',serif;font-weight:900;
+  font-size:clamp(52px,10vw,110px);
+  color:var(--g1);line-height:.95;
+  margin-bottom:6px;
+  position:relative;z-index:1;
+}
+.hero-italic{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:700;
+  font-size:clamp(18px,3.5vw,34px);
+  color:var(--a1);margin-bottom:24px;
+  position:relative;z-index:1;
+}
+.hero-desc{
+  font-size:16px;line-height:1.8;color:var(--ink2);
+  max-width:500px;margin:0 auto 32px;font-weight:400;
+  position:relative;z-index:1;
+}
+
+/* Info chips row */
+.hero-chips{
+  display:flex;justify-content:center;flex-wrap:wrap;gap:10px;
+  margin-bottom:40px;position:relative;z-index:1;
+}
+.hchip{
+  background:#fff;color:var(--g1);
+  padding:10px 20px;border-radius:50px;
+  font-size:13px;font-weight:700;
+  display:flex;align-items:center;gap:7px;
+}
+
+/* SVG illustration strip at bottom of hero */
+.hero-scene{
+  position:relative;width:100%;height:220px;
+  margin-top:16px;flex-shrink:0;
+  display:block;
+}
+
+/* ═══════════════════════════════════════════
+   SECTION STYLES
+═══════════════════════════════════════════ */
+.sec{padding:64px 24px;position:relative;overflow:hidden;}
+.sec-light{background:var(--paper);}
+.sec-sand {background:var(--sand);}
+.sec-night{background:var(--night1);}
+.sec-forest{background:var(--g1);}
+
+.sec-head{text-align:center;margin-bottom:44px;}
+.sec-head h2{
+  font-family:'Fraunces',serif;font-weight:900;
+  font-size:clamp(28px,4.5vw,42px);
+  color:var(--g1);line-height:1.15;
+  margin-top:10px;
+}
+.sec-night .sec-head h2{color:#fff;}
+.sec-forest .sec-head h2{color:#fff;}
+
+/* Wavy section dividers */
+.wave{display:block;width:100%;overflow:hidden;line-height:0;margin-top:-1px;}
+
+/* ═══════════════════════════════════════════
+   FORM CARD
+═══════════════════════════════════════════ */
+.card{
+  background:#fff;
+  border-radius:var(--radius-lg);
+  margin-bottom:18px;
+  overflow:hidden;
+  box-shadow:0 2px 20px rgba(0,0,0,0.06);
+  transition:transform .25s,box-shadow .25s;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,0.1);}
+
+.sec-night .card{background:rgba(255,255,255,0.07);box-shadow:none;border:1.5px solid rgba(255,255,255,0.1);}
+.sec-night .card:hover{background:rgba(255,255,255,0.1);}
+
+.card-head{
+  padding:16px 24px;
+  display:flex;align-items:center;gap:12px;
+  background:var(--g1);
+}
+.card-head h3{
+  font-size:12px;font-weight:800;letter-spacing:3px;
+  text-transform:uppercase;color:#fff;
+}
+.card-head .chi{font-size:18px;}
+.ch-amber{background:var(--a1)!important;}
+.ch-fire {background:var(--r1)!important;}
+.ch-wa   {background:#0d8a4a!important;}
+
+.card-body{padding:28px 24px;}
+
+/* ═══════════════════════════════════════════
+   FORM FIELDS
+═══════════════════════════════════════════ */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:540px){.fg{grid-template-columns:1fr;}}
+.fg-item{display:flex;flex-direction:column;gap:8px;}
+.fg-item.full{grid-column:1/-1;}
+
+.fl{
+  font-size:11px;font-weight:800;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--ink3);
+}
+.sec-night .fl{color:var(--g5);}
+
+.fi{
+  padding:13px 16px;
+  border-radius:var(--radius-sm);
+  border:2px solid #eee;
+  background:var(--cream);
+  font-family:'Nunito',sans-serif;
+  font-size:15px;color:var(--ink);
+  transition:border-color .2s,box-shadow .2s;
+  outline:none;width:100%;
+}
+.fi:focus{border-color:var(--g3);box-shadow:0 0 0 4px rgba(95,160,53,0.12);}
+.fi::placeholder{color:#bbb;}
+textarea.fi{min-height:90px;resize:vertical;}
+.sec-night .fi{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.12);color:#fff;}
+.sec-night .fi:focus{border-color:var(--g4);}
+.sec-night .fi::placeholder{color:rgba(255,255,255,0.3);}
+
+/* ═══════════════════════════════════════════
+   OPTION TICKETS
+═══════════════════════════════════════════ */
+.opt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:12px;}
+.opt-card input{display:none;}
+.opt-lbl{
+  display:flex;flex-direction:column;align-items:center;
+  padding:22px 16px;gap:8px;text-align:center;
+  border-radius:var(--radius);border:2px solid #eee;
+  background:var(--cream);cursor:pointer;
+  transition:all .2s;
+}
+.opt-lbl:hover{border-color:var(--g3);background:var(--g6);}
+.opt-card input:checked + .opt-lbl{
+  background:var(--g1);border-color:var(--g1);
+  box-shadow:0 4px 20px rgba(45,90,27,.25);
+}
+.opt-card input:checked + .opt-lbl .oi,
+.opt-card input:checked + .opt-lbl .ot,
+.opt-card input:checked + .opt-lbl .os{color:#fff!important;}
+.opt-card input:checked + .opt-lbl .op{color:var(--a3)!important;}
+.oi{font-size:28px;}
+.ot{font-family:'Fraunces',serif;font-weight:700;font-size:17px;color:var(--g1);}
+.op{font-family:'Fraunces',serif;font-weight:900;font-size:30px;color:var(--a1);}
+.os{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);}
+
+/* ═══════════════════════════════════════════
+   CHIPS
+═══════════════════════════════════════════ */
+.cg{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+.ci input{display:none;}
+.ch{
+  padding:9px 16px;border-radius:50px;
+  border:2px solid #e8e8e8;background:var(--cream);
+  font-family:'Nunito',sans-serif;
+  font-size:13px;font-weight:700;color:var(--ink2);
+  cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;gap:6px;
+}
+.ch:hover{border-color:var(--g3);color:var(--g1);}
+.ci input:checked + .ch{background:var(--g1);border-color:var(--g1);color:#fff;}
+
+.kg{display:flex;flex-wrap:wrap;gap:8px;}
+.ki input{display:none;}
+.kh{
+  padding:9px 16px;border-radius:50px;
+  border:2px solid #e8e8e8;background:var(--cream);
+  font-size:13px;font-weight:700;color:var(--ink2);
+  cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;gap:6px;
+}
+.kh:hover{border-color:var(--a2);color:var(--a1);}
+.ki input:checked + .kh{background:var(--a2);border-color:var(--a2);color:#fff;}
+
+.sec-night .ch{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#fff;}
+.sec-night .ci input:checked + .ch{background:rgba(95,160,53,.35);border-color:var(--g4);}
+.sec-night .kh{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#fff;}
+.sec-night .ki input:checked + .kh{background:rgba(232,148,32,.35);border-color:var(--a3);color:var(--a3);}
+
+/* ═══════════════════════════════════════════
+   SUBMIT
+═══════════════════════════════════════════ */
+.btn-sub{
+  display:block;width:100%;padding:18px 24px;
+  background:var(--g1);color:#fff;border:none;
+  border-radius:50px;
+  font-family:'Nunito',sans-serif;
+  font-size:18px;font-weight:800;
+  cursor:pointer;letter-spacing:.5px;
+  transition:all .25s;
+  box-shadow:0 6px 28px rgba(45,90,27,.3);
+  margin-top:8px;
+}
+.btn-sub:hover{background:var(--g2);transform:translateY(-2px);box-shadow:0 10px 36px rgba(45,90,27,.4);}
+.btn-sub:active{transform:translateY(0);}
+
+/* ═══════════════════════════════════════════
+   PAYMENT
+═══════════════════════════════════════════ */
+.pay-box{
+  background:linear-gradient(135deg,#1e2e10,#2a4010);
+  border-radius:var(--radius);padding:30px 26px;
+  text-align:center;margin-top:14px;
+  border:1.5px solid rgba(140,196,90,.2);
+}
+.pay-box h3{font-family:'Fraunces',serif;font-size:24px;color:var(--a3);margin-bottom:10px;}
+.pay-box p{font-size:15px;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:20px;}
+.btn-pay{
+  display:inline-block;padding:14px 32px;
+  background:var(--a2);color:#fff;
+  border-radius:50px;font-weight:800;font-size:14px;
+  text-decoration:none;letter-spacing:1px;
+  box-shadow:0 4px 20px rgba(232,148,32,.4);
+  transition:all .2s;
+}
+.btn-pay:hover{background:var(--a3);transform:translateY(-2px);}
+
+/* WA */
+.wa-box{
+  border-radius:var(--radius);
+  background:rgba(37,211,102,.1);
+  border:1.5px solid rgba(37,211,102,.3);
+  padding:20px 22px;
+  display:flex;align-items:flex-start;gap:16px;
+  margin-top:14px;
+}
+.wa-ico{font-size:36px;flex-shrink:0;}
+.wa-t h4{font-family:'Fraunces',serif;font-size:19px;color:#25d366;margin-bottom:5px;}
+.wa-t p{font-size:14px;color:rgba(255,255,255,.65);line-height:1.65;}
+.btn-wa{
+  display:inline-block;margin-top:10px;padding:9px 20px;
+  background:#25d366;color:#fff;border-radius:50px;
+  font-size:12px;font-weight:800;letter-spacing:1px;
+  text-decoration:none;transition:all .2s;
+}
+.btn-wa:hover{background:#1ab255;}
+
+/* ═══════════════════════════════════════════
+   INFO GRID
+═══════════════════════════════════════════ */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:36px;}
+.ic{
+  background:rgba(255,255,255,.08);
+  border:1.5px solid rgba(255,255,255,.1);
+  border-radius:var(--radius);padding:24px 20px;
+  transition:background .2s;
+}
+.ic:hover{background:rgba(255,255,255,.12);}
+.ic-ttl{
+  font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;
+  color:var(--g5);margin-bottom:16px;display:flex;align-items:center;gap:10px;
+}
+.ic-ttl span{font-size:20px;}
+.ic ul{list-style:none;}
+.ic ul li{
+  font-size:13px;color:rgba(255,255,255,.65);
+  padding:5px 0;display:flex;gap:9px;
+  align-items:flex-start;line-height:1.55;
+  border-bottom:.5px solid rgba(255,255,255,.06);
+}
+.ic ul li:last-child{border-bottom:none;}
+.ic ul li::before{content:'·';color:var(--g4);font-size:18px;line-height:1;flex-shrink:0;margin-top:-1px;}
+
+/* ═══════════════════════════════════════════
+   STARS
+═══════════════════════════════════════════ */
+.sf{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.st{position:absolute;border-radius:50%;background:var(--star);animation:tw 3s ease-in-out infinite;}
+@keyframes tw{0%,100%{opacity:.2;transform:scale(1)}50%{opacity:.95;transform:scale(1.5)}}
+
+/* music bars */
+.mb-wrap{display:flex;align-items:flex-end;gap:4px;height:26px;justify-content:center;margin:14px 0;}
+.mb{width:5px;border-radius:3px 3px 0 0;background:var(--g5);animation:sb .8s ease-in-out infinite;}
+.mb:nth-child(1){height:8px;animation-delay:0s}.mb:nth-child(2){height:18px;animation-delay:.1s}
+.mb:nth-child(3){height:12px;animation-delay:.2s}.mb:nth-child(4){height:22px;animation-delay:.3s}
+.mb:nth-child(5){height:9px;animation-delay:.4s} .mb:nth-child(6){height:18px;animation-delay:.5s}
+.mb:nth-child(7){height:7px;animation-delay:.6s}
+@keyframes sb{0%,100%{transform:scaleY(1)}50%{transform:scaleY(2.3)}}
+
+/* campfire */
+.cf{display:flex;justify-content:center;align-items:flex-end;gap:1px;margin:28px auto 8px;width:fit-content;}
+.fl{border-radius:50% 50% 20% 20%/60% 60% 40% 40%;transform-origin:bottom center;animation:flk .7s ease-in-out infinite alternate;}
+.fl1{width:11px;height:38px;background:#e84800;animation-delay:0s}
+.fl2{width:15px;height:54px;background:#ff6c00;animation-delay:.1s}
+.fl3{width:13px;height:46px;background:#ffa020;animation-delay:.2s}
+.fl4{width:9px;height:30px;background:#ffd040;animation-delay:.05s}
+@keyframes flk{0%{transform:scaleX(.9)scaleY(1)rotate(-2deg)}100%{transform:scaleX(1.1)scaleY(1.1)rotate(2deg)}}
+
+/* footer */
+.footer{background:#0c1408;padding:36px 24px;text-align:center;}
+.ft{font-family:'Fraunces',serif;font-size:26px;color:rgba(255,255,255,.25);margin-bottom:7px;}
+.footer p{font-size:13px;color:rgba(255,255,255,.2);letter-spacing:.5px;}
+.footer a{color:rgba(255,255,255,.3);}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.vis{opacity:1;transform:translateY(0);}
+
+/* success */
+.sov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;align-items:center;justify-content:center;}
+.sov.show{display:flex;}
+.sb2{
+  background:#fff;border-radius:var(--radius-lg);
+  max-width:400px;width:90%;padding:44px 32px;text-align:center;
+  box-shadow:0 24px 60px rgba(0,0,0,.25);
+  animation:pop .4s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes pop{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
+.sb2 .big{font-size:52px;display:block;margin-bottom:14px;}
+.sb2 h2{font-family:'Fraunces',serif;font-size:26px;color:var(--g1);margin-bottom:10px;}
+.sb2 p{font-size:15px;color:var(--ink2);line-height:1.7;}
+.btn-cl{
+  margin-top:22px;padding:12px 28px;
+  background:var(--g1);color:#fff;border:none;
+  border-radius:50px;font-family:'Nunito',sans-serif;
+  font-size:13px;font-weight:800;letter-spacing:1px;
+  cursor:pointer;transition:all .2s;
+}
+.btn-cl:hover{background:var(--g2);}
+
+@media(max-width:480px){
+  .hero-scene{height:150px;}
+  .opt-grid{grid-template-columns:1fr;}
+  .card-body{padding:20px 16px;}
+  .info-grid{grid-template-columns:1fr;}
+  .wa-box{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ INTRO ═══════ -->
+<div id="intro" onclick="skipIntro()">
+  <div class="intro-shape is1"></div>
+  <div class="intro-shape is2"></div>
+  <div class="intro-shape is3"></div>
+  <div class="intro-shape is4"></div>
+
+  <!-- floating icons -->
+  <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden;">
+    <span style="position:absolute;font-size:36px;top:12%;left:7%;opacity:.25;animation:float1 4s ease-in-out infinite;">⛺</span>
+    <span style="position:absolute;font-size:28px;top:18%;right:9%;opacity:.25;animation:float2 5s ease-in-out infinite 1s;">🌾</span>
+    <span style="position:absolute;font-size:32px;bottom:18%;left:9%;opacity:.25;animation:float1 4.5s ease-in-out infinite .5s;">🔥</span>
+    <span style="position:absolute;font-size:24px;bottom:22%;right:7%;opacity:.25;animation:float2 3.5s ease-in-out infinite 2s;">🎵</span>
+    <span style="position:absolute;font-size:20px;top:40%;left:4%;opacity:.2;animation:float1 6s ease-in-out infinite 1.5s;">🌿</span>
+    <span style="position:absolute;font-size:20px;top:38%;right:5%;opacity:.2;animation:float2 5.5s ease-in-out infinite .8s;">🌻</span>
+  </div>
+
+  <div class="i-content">
+    <div class="i-tag">🌾 Soirée au moulin · Été 2026</div>
+    <div class="i-title">La Champêtre</div>
+    <div class="i-sub">Édition 2026</div>
+    <div class="i-dots">
+      <div class="i-dot"></div><div class="i-dot big"></div><div class="i-dot"></div>
+    </div>
+    <div class="i-hint">Cliquer pour s'inscrire ↓</div>
+  </div>
+</div>
+
+<style>
+@keyframes float1{0%,100%{transform:translateY(0)rotate(-5deg)}50%{transform:translateY(-14px)rotate(5deg)}}
+@keyframes float2{0%,100%{transform:translateY(0)rotate(5deg)}50%{transform:translateY(-10px)rotate(-3deg)}}
+</style>
+
+<!-- ═══════ MAIN ═══════ -->
+<div id="main">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-circle"></div>
+
+  <!-- floating deco icons -->
+  <div style="position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;">
+    <span style="position:absolute;font-size:48px;top:10%;left:4%;opacity:.18;animation:float1 5s ease-in-out infinite;">🌿</span>
+    <span style="position:absolute;font-size:40px;top:8%;right:5%;opacity:.18;animation:float2 6s ease-in-out infinite 1s;">🌸</span>
+    <span style="position:absolute;font-size:36px;bottom:30%;left:6%;opacity:.16;animation:float1 4.5s ease-in-out infinite .8s;">🍃</span>
+    <span style="position:absolute;font-size:32px;bottom:28%;right:6%;opacity:.16;animation:float2 5.5s ease-in-out infinite 1.5s;">🌻</span>
+    <span style="position:absolute;font-size:26px;top:35%;left:2%;opacity:.12;animation:float1 7s ease-in-out infinite 2s;">🌾</span>
+    <span style="position:absolute;font-size:26px;top:30%;right:2%;opacity:.12;animation:float2 6.5s ease-in-out infinite .5s;">🍀</span>
+  </div>
+
+  <div style="position:relative;z-index:1;">
+    <div class="hero-eyebrow">
+      <div class="hero-line"></div>
+      <span class="pill pill-green">Inscription officielle</span>
+      <div class="hero-line"></div>
+    </div>
+    <h1 class="hero-title">La Champêtre</h1>
+    <div class="hero-italic">Édition 2026</div>
+    <p class="hero-desc">Un week-end au moulin, en pleine campagne — camper, danser, partager et se retrouver entre amis loin de tout.</p>
+    <div class="hero-chips">
+      <div class="hchip">🌾 Au moulin</div>
+      <div class="hchip">⛺ Camping sur place</div>
+      <div class="hchip">🎵 Vendredi &amp; Samedi</div>
+      <div class="hchip">🔥 Feu de camp</div>
+    </div>
+  </div>
+
+  <!-- SCENE ILLUSTRATION -->
+  <div class="hero-scene">
+    <svg viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet" style="width:100%;height:100%;display:block;">
+      <!-- sky gradient strip -->
+      <defs>
+        <linearGradient id="skyg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#c4e08a" stop-opacity=".4"/>
+          <stop offset="100%" stop-color="#8cc45a" stop-opacity=".15"/>
+        </linearGradient>
+        <linearGradient id="grassg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#5fa035"/>
+          <stop offset="100%" stop-color="#3e7a26"/>
+        </linearGradient>
+        <linearGradient id="pathg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#c4a870"/>
+          <stop offset="100%" stop-color="#a88a50"/>
+        </linearGradient>
+      </defs>
+
+      <!-- ground -->
+      <ellipse cx="450" cy="195" rx="500" ry="50" fill="url(#grassg)"/>
+      <rect x="0" y="185" width="900" height="35" fill="#3e7a26"/>
+
+      <!-- path -->
+      <ellipse cx="450" cy="198" rx="55" ry="22" fill="url(#pathg)" opacity=".7"/>
+      <rect x="415" y="175" width="70" height="45" fill="url(#pathg)" opacity=".5"/>
+
+      <!-- hills bg -->
+      <ellipse cx="150" cy="210" rx="220" ry="80" fill="#5fa035" opacity=".5"/>
+      <ellipse cx="760" cy="215" rx="250" ry="75" fill="#4a8a2a" opacity=".4"/>
+
+      <!-- TREE left 1 -->
+      <rect x="62" y="110" width="10" height="80" rx="5" fill="#6b3d1e"/>
+      <ellipse cx="67" cy="102" rx="34" ry="54" fill="#2d5a1b"/>
+      <ellipse cx="67" cy="82" rx="24" ry="40" fill="#3e7a26"/>
+      <!-- TREE left 2 -->
+      <rect x="108" y="125" width="8" height="65" rx="4" fill="#6b3d1e"/>
+      <ellipse cx="112" cy="118" rx="26" ry="44" fill="#3e7a26"/>
+      <ellipse cx="112" cy="100" rx="18" ry="32" fill="#5fa035"/>
+
+      <!-- TREE right 1 -->
+      <rect x="820" y="108" width="10" height="82" rx="5" fill="#6b3d1e"/>
+      <ellipse cx="825" cy="100" rx="36" ry="56" fill="#2d5a1b"/>
+      <ellipse cx="825" cy="78" rx="26" ry="42" fill="#3e7a26"/>
+      <!-- TREE right 2 -->
+      <rect x="782" y="122" width="8" height="68" rx="4" fill="#6b3d1e"/>
+      <ellipse cx="786" cy="116" rx="28" ry="46" fill="#3e7a26"/>
+      <ellipse cx="786" cy="96" rx="19" ry="33" fill="#5fa035"/>
+
+      <!-- FENCE left -->
+      <g fill="#8b5e30" stroke="#6b4018" stroke-width="1">
+        <rect x="140" y="167" width="6" height="28" rx="2"/>
+        <rect x="185" y="165" width="6" height="30" rx="2"/>
+        <rect x="230" y="167" width="6" height="28" rx="2"/>
+        <rect x="140" y="174" width="96" height="4" rx="2"/>
+        <rect x="140" y="183" width="96" height="3" rx="1"/>
+      </g>
+      <!-- FENCE right -->
+      <g fill="#8b5e30" stroke="#6b4018" stroke-width="1">
+        <rect x="660" y="167" width="6" height="28" rx="2"/>
+        <rect x="705" y="165" width="6" height="30" rx="2"/>
+        <rect x="750" y="167" width="6" height="28" rx="2"/>
+        <rect x="660" y="174" width="96" height="4" rx="2"/>
+        <rect x="660" y="183" width="96" height="3" rx="1"/>
+      </g>
+
+      <!-- TENT 1 — orange (left) -->
+      <g transform="translate(270,118)">
+        <polygon points="55,72 0,72 27,8" fill="#e05030"/>
+        <polygon points="55,72 36,72 55,30" fill="#b83020" opacity=".7"/>
+        <polygon points="19,72 36,72 27,40" fill="#1a0a04" opacity=".85"/>
+        <rect x="2" y="70" width="51" height="4" rx="2" fill="#8b5e30"/>
+      </g>
+      <!-- TENT 2 — green (center) -->
+      <g transform="translate(400,108)">
+        <polygon points="65,82 0,82 32,6" fill="#3e7a26"/>
+        <polygon points="65,82 42,82 65,32" fill="#2d5a1b" opacity=".7"/>
+        <polygon points="22,82 42,82 32,45" fill="#0a1206" opacity=".85"/>
+        <rect x="2" y="80" width="61" height="4" rx="2" fill="#8b5e30"/>
+      </g>
+      <!-- TENT 3 — amber (right) -->
+      <g transform="translate(548,122)">
+        <polygon points="52,68 0,68 26,10" fill="#e89420"/>
+        <polygon points="52,68 34,68 52,28" fill="#b87010" opacity=".7"/>
+        <polygon points="18,68 34,68 26,38" fill="#180c00" opacity=".85"/>
+        <rect x="2" y="66" width="48" height="4" rx="2" fill="#8b5e30"/>
+      </g>
+
+      <!-- CAMPFIRE center -->
+      <g transform="translate(434,155)">
+        <line x1="-18" y1="14" x2="18" y2="6" stroke="#6b3d1e" stroke-width="6" stroke-linecap="round"/>
+        <line x1="-14" y1="6" x2="14" y2="14" stroke="#8b5020" stroke-width="6" stroke-linecap="round"/>
+        <ellipse cx="0" cy="12" rx="14" ry="5" fill="#ff6820" opacity=".6"/>
+        <!-- flat flame shapes -->
+        <polygon points="0,-18 -8,4 8,4" fill="#ff4500" opacity=".9"/>
+        <polygon points="0,-26 -5,1 5,1" fill="#ff8800"/>
+        <polygon points="0,-18 -3,2 3,2" fill="#ffd040"/>
+      </g>
+
+      <!-- wildflowers -->
+      <g opacity=".7">
+        <circle cx="180" cy="182" r="3.5" fill="#ff6b9d"/>
+        <circle cx="200" cy="179" r="2.5" fill="#ffd700"/>
+        <circle cx="350" cy="181" r="3" fill="#ff6b9d"/>
+        <circle cx="370" cy="179" r="2" fill="#ffd700"/>
+        <circle cx="530" cy="182" r="3" fill="#ffd700"/>
+        <circle cx="550" cy="180" r="2.5" fill="#ff6b9d"/>
+        <circle cx="680" cy="181" r="3.5" fill="#ff6b9d"/>
+        <circle cx="700" cy="179" r="2.5" fill="#ffd700"/>
+      </g>
+
+      <!-- sun glow -->
+      <circle cx="820" cy="30" r="38" fill="#fde8a0" opacity=".5"/>
+      <circle cx="820" cy="30" r="26" fill="#ffd040" opacity=".7"/>
+
+      <!-- birds -->
+      <g stroke="#2d5a1b" stroke-width="1.8" fill="none" opacity=".5">
+        <path d="M320,30 Q326,24 332,30"/>
+        <path d="M334,30 Q340,24 346,30"/>
+        <path d="M355,22 Q360,16 365,22"/>
+        <path d="M367,22 Q372,16 377,22"/>
+      </g>
+
+      <!-- moulin silhouette (right distance) -->
+      <g transform="translate(730,60)" opacity=".35" fill="#2d5a1b">
+        <rect x="17" y="52" width="10" height="60" rx="3"/>
+        <circle cx="22" cy="48" r="8"/>
+        <rect x="19" y="12" width="6" height="38"/>
+        <rect x="3" y="42" width="38" height="6"/>
+        <rect x="11" y="20" width="22" height="5" transform="rotate(45,22,45)"/>
+        <rect x="11" y="20" width="22" height="5" transform="rotate(-45,22,45)"/>
+      </g>
+    </svg>
+  </div>
+</header>
+
+<!-- wave hero → section 1 -->
+<svg class="wave" viewBox="0 0 1440 50" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="background:var(--g6);">
+  <path d="M0,25 C240,50 480,0 720,28 C960,56 1200,8 1440,22 L1440,50 L0,50Z" fill="#fffdf7"/>
+</svg>
+
+<!-- ═══════ SECTION 1 ═══════ -->
+<section class="sec sec-light">
+
+  <!-- floating deco -->
+  <span style="position:absolute;font-size:80px;right:-20px;top:40px;opacity:.04;pointer-events:none;">🌿</span>
+  <span style="position:absolute;font-size:60px;left:-10px;bottom:60px;opacity:.05;pointer-events:none;">🍃</span>
+
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="pill pill-green">Étape 1 · 3</span>
+      <h2>Vos informations</h2>
+    </div>
+
+    <!-- Identity -->
+    <div class="card reveal">
+      <div class="card-head"><span class="chi">👤</span><h3>Qui êtes-vous ?</h3></div>
+      <div class="card-body">
+        <div class="fg">
+          <div class="fg-item"><label class="fl" for="prenom">Prénom *</label><input class="fi" type="text" id="prenom" placeholder="Léonie" required/></div>
+          <div class="fg-item"><label class="fl" for="nom">Nom *</label><input class="fi" type="text" id="nom" placeholder="Dupont" required/></div>
+          <div class="fg-item"><label class="fl" for="email">Email *</label><input class="fi" type="email" id="email" placeholder="leonie@example.com" required/></div>
+          <div class="fg-item"><label class="fl" for="tel">Téléphone *</label><input class="fi" type="tel" id="tel" placeholder="06 12 34 56 78" required/></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dates -->
+    <div class="card reveal">
+      <div class="card-head"><span class="chi">📅</span><h3>Je viens…</h3></div>
+      <div class="card-body">
+        <div class="opt-grid">
+          <div class="opt-card"><input type="radio" name="dates" id="ven" value="vendredi"/>
+            <label class="opt-lbl" for="ven"><span class="oi">🌙</span><span class="ot">Vendredi soir</span><span class="op">20€</span><span class="os">Soirée + nuit</span></label></div>
+          <div class="opt-card"><input type="radio" name="dates" id="sam" value="samedi"/>
+            <label class="opt-lbl" for="sam"><span class="oi">🌟</span><span class="ot">Samedi soir</span><span class="op">20€</span><span class="os">Grande soirée</span></label></div>
+          <div class="opt-card"><input type="radio" name="dates" id="deux" value="les_deux"/>
+            <label class="opt-lbl" for="deux"><span class="oi">🎉</span><span class="ot">Les deux</span><span class="op">35€</span><span class="os">Week-end complet !</span></label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transport -->
+    <div class="card reveal">
+      <div class="card-head"><span class="chi">🚗</span><h3>Comment vous venez ?</h3></div>
+      <div class="card-body">
+        <div class="fg-item" style="margin-bottom:22px;">
+          <label class="fl">Mode de transport</label>
+          <div class="cg">
+            <div class="ci"><input type="radio" name="tr" id="tv" value="voiture"/><label class="ch" for="tv">🚗 Voiture</label></div>
+            <div class="ci"><input type="radio" name="tr" id="tt" value="train"/><label class="ch" for="tt">🚆 Train</label></div>
+            <div class="ci"><input type="radio" name="tr" id="tc" value="covoiturage"/><label class="ch" for="tc">🤝 Covoiturage</label></div>
+            <div class="ci"><input type="radio" name="tr" id="tvl" value="velo"/><label class="ch" for="tvl">🚲 Vélo</label></div>
+            <div class="ci"><input type="radio" name="tr" id="ta" value="autre"/><label class="ch" for="ta">✨ Autre</label></div>
+          </div>
+        </div>
+        <div class="fg-item" style="margin-bottom:22px;">
+          <label class="fl">Ville de départ</label>
+          <div class="cg">
+            <div class="ci"><input type="radio" name="dep" id="dp" value="paris"/><label class="ch" for="dp">🗼 Paris</label></div>
+            <div class="ci"><input type="radio" name="dep" id="dl" value="lyon"/><label class="ch" for="dl">🦁 Lyon</label></div>
+            <div class="ci"><input type="radio" name="dep" id="dli" value="lille"/><label class="ch" for="dli">🍺 Lille</label></div>
+            <div class="ci"><input type="radio" name="dep" id="da" value="autre"/><label class="ch" for="da">📍 Autre</label></div>
+          </div>
+        </div>
+        <div class="fg-item">
+          <label class="fl" for="tdet">Précisions (gare, covoit', besoin d'un pickup…)</label>
+          <textarea class="fi" id="tdet" placeholder="Ex : j'arrive en train à Douai à 17h, besoin d'un pickup ! Ou : j'ai 2 places depuis Paris."></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- wave 1→2 -->
+<svg class="wave" viewBox="0 0 1440 50" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="background:#fffdf7;">
+  <path d="M0,20 C360,50 720,0 1080,30 C1200,40 1340,18 1440,28 L1440,50 L0,50Z" fill="#f0e8d0"/>
+</svg>
+
+<!-- ═══════ SECTION 2 ═══════ -->
+<section class="sec sec-sand">
+
+  <span style="position:absolute;font-size:72px;left:-15px;top:50px;opacity:.06;pointer-events:none;">🌻</span>
+  <span style="position:absolute;font-size:64px;right:-10px;bottom:40px;opacity:.06;pointer-events:none;">🌾</span>
+
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="pill pill-amber">Étape 2 · 3</span>
+      <h2>À table &amp; petits mots</h2>
+    </div>
+
+    <!-- Régimes -->
+    <div class="card reveal">
+      <div class="card-head ch-amber"><span class="chi">🥗</span><h3>Régimes alimentaires</h3></div>
+      <div class="card-body">
+        <p style="font-size:13px;color:var(--ink3);margin-bottom:14px;font-weight:600;">Cochez tout ce qui vous concerne</p>
+        <div class="kg">
+          <div class="ki"><input type="checkbox" id="rv" name="regime" value="vegetarien"/><label class="kh" for="rv">🥦 Végétarien</label></div>
+          <div class="ki"><input type="checkbox" id="rvg" name="regime" value="vegan"/><label class="kh" for="rvg">🌱 Végan</label></div>
+          <div class="ki"><input type="checkbox" id="rg" name="regime" value="sans_gluten"/><label class="kh" for="rg">🌾 Sans gluten</label></div>
+          <div class="ki"><input type="checkbox" id="rh" name="regime" value="halal"/><label class="kh" for="rh">☪️ Halal</label></div>
+          <div class="ki"><input type="checkbox" id="ra" name="regime" value="allergies"/><label class="kh" for="ra">⚠️ Allergies</label></div>
+          <div class="ki"><input type="checkbox" id="ro" name="regime" value="omnivore"/><label class="kh" for="ro">🍖 Je mange tout</label></div>
+        </div>
+        <div class="fg-item" style="margin-top:18px;">
+          <label class="fl" for="rdet">Précisez allergies ou contraintes</label>
+          <input class="fi" type="text" id="rdet" placeholder="Ex : allergie aux noix, intolérance lactose…"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- Commentaire -->
+    <div class="card reveal">
+      <div class="card-head ch-amber"><span class="chi">🎪</span><h3>Un mot pour l'orga</h3></div>
+      <div class="card-body">
+        <div class="fg-item">
+          <label class="fl" for="com">Idée, défi, message rigolo…</label>
+          <textarea class="fi" id="com" style="min-height:100px;" placeholder="Une idée d'animation, un défi, une dédicace pour le DJ set, vos talents cachés… ou juste un grand bonjour 🌻"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- wave 2→3 -->
+<svg class="wave" viewBox="0 0 1440 55" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="background:#f0e8d0;">
+  <path d="M0,30 C300,55 600,5 900,35 C1100,55 1300,15 1440,25 L1440,55 L0,55Z" fill="#12203a"/>
+</svg>
+
+<!-- ═══════ SECTION 3 — NUIT ═══════ -->
+<section class="sec sec-night">
+  <div class="sf" id="sf"></div>
+
+  <!-- floating night icons -->
+  <span style="position:absolute;font-size:60px;left:-10px;top:60px;opacity:.07;pointer-events:none;">✨</span>
+  <span style="position:absolute;font-size:48px;right:-8px;top:80px;opacity:.07;pointer-events:none;">🎶</span>
+  <span style="position:absolute;font-size:56px;right:5%;bottom:60px;opacity:.06;pointer-events:none;">🪩</span>
+
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="pill" style="background:rgba(140,196,90,.2);color:var(--g5);">Étape 3 · 3</span>
+      <h2>WhatsApp &amp; Paiement</h2>
+      <div class="mb-wrap">
+        <div class="mb"></div><div class="mb"></div><div class="mb"></div>
+        <div class="mb"></div><div class="mb"></div><div class="mb"></div>
+        <div class="mb"></div>
+      </div>
+    </div>
+
+    <!-- WhatsApp -->
+    <div class="card reveal">
+      <div class="card-head ch-wa"><span class="chi">💬</span><h3>Groupe WhatsApp</h3></div>
+      <div class="card-body">
+        <div class="wa-box">
+          <div class="wa-ico">💬</div>
+          <div class="wa-t">
+            <h4>Rejoignez le groupe !</h4>
+            <p>Infos pratiques, covoiturages, liste d'affaires, mises à jour — tout se passe là-dedans.</p>
+            <a href="https://chat.whatsapp.com/VOTRE_LIEN" class="btn-wa" target="_blank">Rejoindre →</a>
+          </div>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="ki"><input type="checkbox" id="wp" name="whatsapp"/><label class="kh" for="wp">✅ J'ai rejoint (ou vais rejoindre) le groupe</label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paiement -->
+    <div class="card reveal">
+      <div class="card-head ch-fire"><span class="chi">💸</span><h3>Paiement</h3></div>
+      <div class="card-body">
+        <div class="pay-box">
+          <h3>Réglez votre participation</h3>
+          <p>Vendredi <em>ou</em> Samedi : <strong style="color:var(--a3);">20 €</strong><br/>
+          Week-end complet (Ven + Sam) : <strong style="color:var(--a3);">35 €</strong><br/>
+          <span style="font-size:13px;opacity:.7;">Précisez prénom + nom en référence</span></p>
+          <a href="https://lydia-app.com/VOTRE_LIEN" class="btn-pay" target="_blank">💳 Payer maintenant</a>
+          <p style="font-size:12px;opacity:.4;margin-top:12px;margin-bottom:0;">Inscription confirmée dès réception du paiement</p>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="ki"><input type="checkbox" id="pay" name="paiement"/><label class="kh" for="pay">✅ J'ai effectué (ou vais effectuer) le paiement</label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="card reveal">
+      <div class="card-head"><span class="chi">🌾</span><h3>Valider mon inscription</h3></div>
+      <div class="card-body">
+        <p style="color:rgba(196,224,138,.65);font-size:14px;margin-bottom:18px;line-height:1.8;font-weight:500;">
+          Un email de confirmation vous sera envoyé. On a hâte de vous voir au moulin ! 🔥
+        </p>
+        <button class="btn-sub" onclick="submitForm()">Confirmer mon inscription à La Champêtre 2026 🌿</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- wave 3→info -->
+<svg class="wave" viewBox="0 0 1440 50" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="background:#12203a;">
+  <path d="M0,15 C360,50 720,0 1080,28 C1260,42 1360,12 1440,20 L1440,50 L0,50Z" fill="#2d5a1b"/>
+</svg>
+
+<!-- ═══════ INFOS ═══════ -->
+<section class="sec sec-forest" style="padding-top:50px;">
+  <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,transparent 0,transparent 20px,rgba(255,255,255,.02) 20px,rgba(255,255,255,.02) 21px);pointer-events:none;"></div>
+
+  <span style="position:absolute;font-size:80px;right:-15px;top:30px;opacity:.06;pointer-events:none;">🌲</span>
+  <span style="position:absolute;font-size:64px;left:-10px;bottom:50px;opacity:.06;pointer-events:none;">🌳</span>
+
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill" style="background:rgba(255,255,255,.12);color:var(--g5);">À savoir</span>
+      <h2>Infos pratiques</h2>
+      <p style="font-size:15px;color:rgba(255,255,255,.45);margin-top:8px;max-width:460px;margin-left:auto;margin-right:auto;">Tout ce qu'il vous faut pour préparer votre week-end champêtre</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="ic">
+        <div class="ic-ttl"><span>⛺</span> Camping</div>
+        <ul>
+          <li>Camping sauvage sur la prairie du moulin</li>
+          <li>Tente + sac de couchage par vos soins</li>
+          <li>Pas de camping-car ni caravane</li>
+          <li>Emplacements : premier arrivé, premier servi</li>
+        </ul>
+      </div>
+      <div class="ic">
+        <div class="ic-ttl"><span>🎒</span> Affaires</div>
+        <ul>
+          <li>Tente, tapis de sol, sac de couchage chaud</li>
+          <li>Lampe frontale — indispensable !</li>
+          <li>Vêtements chauds pour la nuit</li>
+          <li>Bottes ou chaussures de rando</li>
+          <li>Gobelet réutilisable (zéro déchet ✊)</li>
+        </ul>
+      </div>
+      <div class="ic">
+        <div class="ic-ttl"><span>🎵</span> Programme</div>
+        <ul>
+          <li>Musique live &amp; DJ set le soir</li>
+          <li>Feu de camp &amp; ambiance guinguette</li>
+          <li>Repas partagés, atelier cuisine</li>
+          <li>Balade dans les champs le matin</li>
+          <li>Pétanque, jeux de plein air</li>
+          <li>Grande tablée du dimanche midi</li>
+        </ul>
+      </div>
+      <div class="ic">
+        <div class="ic-ttl"><span>📍</span> Accès</div>
+        <ul>
+          <li>Adresse envoyée aux inscrits confirmés</li>
+          <li>Navette depuis la gare (selon demandes)</li>
+          <li>Parking disponible sur place</li>
+          <li>Eau potable et sanitaires sur place</li>
+          <li>Bar asso — pas d'alcool extérieur svp</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:50px;">
+      <div class="cf">
+        <div class="fl fl1"></div><div class="fl fl2"></div>
+        <div class="fl fl3"></div><div class="fl fl4"></div>
+      </div>
+      <div style="height:5px;width:50px;background:#1e3a0e;border-radius:3px;margin:2px auto 16px;"></div>
+      <p style="font-family:'Fraunces',serif;font-style:italic;font-size:20px;color:rgba(255,255,255,.35);">À très vite au moulin !</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ft">La Champêtre</div>
+  <p style="margin-bottom:5px;">Organisé avec ❤️ par des ami·es pour des ami·es</p>
+  <p>Questions ? <a href="mailto:champetre2026@gmail.com">champetre2026@gmail.com</a></p>
+</footer>
+
+</div><!-- /#main -->
+
+<!-- SUCCESS -->
+<div class="sov" id="sov">
+  <div class="sb2">
+    <span class="big">🌾</span>
+    <h2>Inscription envoyée !</h2>
+    <p>Bienvenue dans la famille Champêtre 🎉<br/>Un email de confirmation arrive bientôt. N'oublie pas le groupe WhatsApp !</p>
+    <button class="btn-cl" onclick="document.getElementById('sov').classList.remove('show')">Fermer</button>
+  </div>
+</div>
+
+<script>
+// INTRO
+const introEl=document.getElementById('intro');
+let t=setTimeout(skip,6000);
+function skipIntro(){clearTimeout(t);skip();}
+function skip(){introEl.classList.add('out');setTimeout(()=>introEl.style.display='none',1300);}
+
+// STARS
+(function(){
+  const sf=document.getElementById('sf');
+  for(let i=0;i<50;i++){
+    const s=document.createElement('div');s.className='st';
+    const sz=Math.random()*2.5+.8;
+    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${sz}px;height:${sz}px;animation-delay:${Math.random()*4}s;animation-duration:${2+Math.random()*3}s;`;
+    sf.appendChild(s);
+  }
+})();
+
+// REVEAL
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// SUBMIT
+function submitForm(){
+  const p=v('prenom'),n=v('nom'),e=v('email'),t2=v('tel');
+  const d=document.querySelector('input[name="dates"]:checked');
+  if(!p||!n||!e||!t2){alert('Merci de remplir vos nom, prénom, email et téléphone 🌿');return;}
+  if(!d){alert('Quand venez-vous ? Vendredi, samedi, ou les deux ? 😊');return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){alert("L'adresse email ne semble pas valide 🌱");return;}
+  const tr=document.querySelector('input[name="tr"]:checked');
+  const dep=document.querySelector('input[name="dep"]:checked');
+  const reg=[...document.querySelectorAll('input[name="regime"]:checked')].map(r=>r.value);
+  const data={
+    timestamp:new Date().toISOString(),
+    prenom:p,nom:n,email:e,tel:t2,
+    dates:d.value,
+    transport:tr?tr.value:'',depart:dep?dep.value:'',
+    transport_details:v('tdet'),
+    regime:reg.join(', '),regime_details:v('rdet'),
+    commentaire:v('com'),
+    whatsapp:document.getElementById('wp').checked?'oui':'non',
+    paiement:document.getElementById('pay').checked?'confirme':'en_attente',
+  };
+  fetch('https://formspree.io/f/VOTRE_ID_ICI',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(data)
+  }).then(()=>ok()).catch(()=>ok());
+}
+function v(id){return document.getElementById(id).value.trim();}
+function ok(){
+  document.getElementById('sov').classList.add('show');
+  document.querySelectorAll('.fi').forEach(i=>i.value='');
+  document.querySelectorAll('input[type="radio"],input[type="checkbox"]').forEach(i=>i.checked=false);
+}
+</script>
+</body>
+</html>
