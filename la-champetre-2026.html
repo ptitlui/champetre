@@ -53,12 +53,13 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);ov
   position:relative;z-index:2;
   background:var(--cream);
   border-radius:28px;
-  padding:52px 48px 44px;
-  max-width:480px;width:90%;
+  padding:40px 36px 36px;
+  max-width:500px;width:92%;
   text-align:center;
   box-shadow:0 40px 100px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.08);
   opacity:0;
   animation:card-appear .9s cubic-bezier(.34,1.2,.64,1) forwards .4s;
+  overflow:hidden;
 }
 @keyframes card-appear{
   from{opacity:0;transform:scale(.85) translateY(30px);}
@@ -67,11 +68,11 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);ov
 
 /* envelope wax seal deco */
 .inv-seal{
-  width:64px;height:64px;border-radius:50%;
+  width:56px;height:56px;border-radius:50%;
   background:linear-gradient(135deg,var(--g2),var(--g1));
   display:flex;align-items:center;justify-content:center;
-  font-size:28px;
-  margin:0 auto 24px;
+  font-size:24px;
+  margin:0 auto 18px;
   box-shadow:0 4px 20px rgba(45,90,27,.35);
   animation:seal-pop .6s cubic-bezier(.34,1.56,.64,1) forwards .9s;
   opacity:0;transform:scale(0);
@@ -79,81 +80,130 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);ov
 @keyframes seal-pop{to{opacity:1;transform:scale(1);}}
 
 .inv-pre{
-  font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  color:var(--ink3);margin-bottom:14px;
+  font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:10px;
   opacity:0;animation:fadeup .7s ease forwards 1.1s;
 }
 .inv-event{
   font-family:'Fraunces',serif;font-weight:900;
-  font-size:clamp(44px,9vw,76px);
-  color:var(--g1);line-height:.95;
-  margin-bottom:6px;
+  font-size:clamp(36px,7vw,58px);
+  color:var(--g1);line-height:1;
+  margin-bottom:4px;
   opacity:0;animation:fadeup .8s ease forwards 1.3s;
 }
 .inv-edition{
   font-family:'Fraunces',serif;font-style:italic;font-weight:700;
-  font-size:clamp(16px,3vw,22px);
-  color:var(--a1);margin-bottom:20px;
+  font-size:clamp(15px,2.5vw,20px);
+  color:var(--a1);margin-bottom:16px;
   opacity:0;animation:fadeup .7s ease forwards 1.5s;
 }
 
 /* divider */
 .inv-divider{
   display:flex;align-items:center;gap:12px;
-  margin:0 auto 20px;max-width:240px;
+  margin:0 auto 16px;max-width:220px;
   opacity:0;animation:fadeup .6s ease forwards 1.65s;
 }
 .inv-divider .ln{flex:1;height:1.5px;background:var(--g5);}
 .inv-divider .dm{width:6px;height:6px;background:var(--g4);transform:rotate(45deg);flex-shrink:0;}
 
 .inv-msg{
-  font-size:16px;line-height:1.75;color:var(--ink2);
-  margin-bottom:28px;font-weight:400;
+  font-size:15px;line-height:1.7;color:var(--ink2);
+  margin-bottom:18px;font-weight:400;
   opacity:0;animation:fadeup .7s ease forwards 1.8s;
 }
 .inv-msg strong{color:var(--g1);font-weight:800;}
 
+/* info block */
+.inv-info{
+  background:#fff;
+  border-radius:16px;
+  padding:16px 18px;
+  margin-bottom:20px;
+  text-align:left;
+  opacity:0;animation:fadeup .7s ease forwards 1.95s;
+  border:1.5px solid var(--g6);
+}
+.inv-info-row{
+  display:flex;align-items:center;gap:12px;
+  padding:8px 0;
+  border-bottom:1px solid var(--g6);
+  font-size:14px;color:var(--ink2);font-weight:600;
+}
+.inv-info-row:last-child{border-bottom:none;padding-bottom:0;}
+.inv-info-row:first-child{padding-top:0;}
+.inv-info-ico{font-size:20px;width:28px;text-align:center;flex-shrink:0;}
+.inv-info-label{font-size:11px;font-weight:700;color:var(--ink3);display:block;margin-bottom:1px;}
+.inv-info-val{font-size:14px;font-weight:700;color:var(--ink);}
+
+/* chips row */
 .inv-details{
-  display:flex;justify-content:center;flex-wrap:wrap;gap:8px;
-  margin-bottom:32px;
-  opacity:0;animation:fadeup .7s ease forwards 2s;
+  display:flex;justify-content:center;flex-wrap:wrap;gap:7px;
+  margin-bottom:22px;
+  opacity:0;animation:fadeup .7s ease forwards 2.1s;
 }
 .inv-chip{
   background:var(--g6);color:var(--g1);
-  padding:7px 16px;border-radius:50px;
-  font-size:13px;font-weight:700;
-  display:flex;align-items:center;gap:6px;
+  padding:6px 14px;border-radius:50px;
+  font-size:12px;font-weight:700;
+  display:flex;align-items:center;gap:5px;
 }
 
-/* CTA button */
+/* buttons row */
+.inv-btns{
+  display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  opacity:0;animation:fadeup .8s ease forwards 2.25s;
+}
+
+/* CTA button primary */
 .inv-btn{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:18px 40px;border-radius:50px;border:none;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:15px 28px;border-radius:50px;border:none;
   background:linear-gradient(135deg, var(--g2), var(--g1));
   color:#fff;
   font-family:'Nunito',sans-serif;
-  font-size:17px;font-weight:800;
+  font-size:15px;font-weight:800;
   cursor:pointer;
-  box-shadow:0 8px 30px rgba(45,90,27,.4);
+  box-shadow:0 6px 24px rgba(45,90,27,.4);
   transition:all .25s;
-  opacity:0;animation:fadeup .8s ease forwards 2.2s;
   position:relative;overflow:hidden;
+  flex:1;min-width:140px;justify-content:center;
 }
 .inv-btn::after{
   content:'';position:absolute;inset:0;
   background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);
   border-radius:50px;
 }
-.inv-btn:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(45,90,27,.5);}
+.inv-btn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(45,90,27,.5);}
 .inv-btn:active{transform:translateY(0);}
-.inv-btn-arrow{font-size:20px;transition:transform .2s;}
-.inv-btn:hover .inv-btn-arrow{transform:translateX(4px);}
+.inv-btn-arrow{font-size:16px;transition:transform .2s;}
+.inv-btn:hover .inv-btn-arrow{transform:translateX(3px);}
+
+/* secondary button */
+.inv-btn2{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:15px 28px;border-radius:50px;
+  border:2px solid var(--g5);
+  background:transparent;
+  color:var(--g1);
+  font-family:'Nunito',sans-serif;
+  font-size:15px;font-weight:800;
+  cursor:pointer;
+  transition:all .25s;
+  flex:1;min-width:140px;justify-content:center;
+  text-decoration:none;
+}
+.inv-btn2:hover{background:var(--g6);border-color:var(--g4);}
 
 /* bottom note */
 .inv-note{
-  font-size:12px;color:var(--ink3);margin-top:16px;
+  font-size:12px;color:var(--ink3);margin-top:14px;
   opacity:0;animation:fadeup .6s ease forwards 2.4s;
 }
+
+@keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float1{0%,100%{transform:translateY(0)rotate(-5deg)}50%{transform:translateY(-14px)rotate(5deg)}}
+@keyframes float2{0%,100%{transform:translateY(0)rotate(5deg)}50%{transform:translateY(-10px)rotate(-3deg)}}
 
 /* ═══════════════════════════════════════════
    GLOBAL
@@ -538,34 +588,61 @@ textarea.fi{min-height:90px;resize:vertical;}
 
     <div class="inv-divider">
       <div class="ln"></div><div class="dm"></div>
-      <div style="font-size:16px;">🌿</div>
+      <div style="font-size:14px;">🌿</div>
       <div class="dm"></div><div class="ln"></div>
     </div>
 
     <p class="inv-msg">
-      Un week-end au <strong>moulin en pleine campagne</strong> —<br/>
-      camper, danser, partager et profiter<br/>
-      entre amis loin de tout. 🔥
+      Un week-end au <strong>moulin en pleine campagne</strong> —
+      camper, danser, partager entre amis loin de tout. 🔥
     </p>
 
-    <div class="inv-details">
-      <div class="inv-chip">⛺ Camping sur place</div>
-      <div class="inv-chip">🎵 Vendredi &amp; Samedi</div>
-      <div class="inv-chip">🌾 Au moulin</div>
+    <!-- Info block -->
+    <div class="inv-info">
+      <div class="inv-info-row">
+        <span class="inv-info-ico">📍</span>
+        <div>
+          <span class="inv-info-label">Lieu</span>
+          <span class="inv-info-val">Au moulin, en pleine campagne</span>
+        </div>
+      </div>
+      <div class="inv-info-row">
+        <span class="inv-info-ico">📅</span>
+        <div>
+          <span class="inv-info-label">Dates</span>
+          <span class="inv-info-val">Vendredi &amp; Samedi soir — Été 2026</span>
+        </div>
+      </div>
+      <div class="inv-info-row">
+        <span class="inv-info-ico">💸</span>
+        <div>
+          <span class="inv-info-label">Tarif</span>
+          <span class="inv-info-val">20€ / soir &nbsp;·&nbsp; 35€ week-end complet</span>
+        </div>
+      </div>
+      <div class="inv-info-row">
+        <span class="inv-info-ico">⛺</span>
+        <div>
+          <span class="inv-info-label">Hébergement</span>
+          <span class="inv-info-val">Camping sur place — tente par vos soins</span>
+        </div>
+      </div>
     </div>
 
-    <button class="inv-btn" onclick="enterForm()">
-      S'inscrire maintenant
-      <span class="inv-btn-arrow">→</span>
-    </button>
-    <div class="inv-note">Vendredi ou Samedi · 20€ &nbsp;|&nbsp; Week-end complet · 35€</div>
+    <div class="inv-btns">
+      <button class="inv-btn" onclick="enterForm()">
+        S'inscrire <span class="inv-btn-arrow">→</span>
+      </button>
+      <a class="inv-btn2" href="https://VOTRE_LIEN_INFO" target="_blank">
+        En savoir plus 🌿
+      </a>
+    </div>
+
+    <div class="inv-note">Inscription confirmée après paiement · Places limitées</div>
   </div>
 </div>
 
-<style>
-@keyframes float1{0%,100%{transform:translateY(0)rotate(-5deg)}50%{transform:translateY(-14px)rotate(5deg)}}
-@keyframes float2{0%,100%{transform:translateY(0)rotate(5deg)}50%{transform:translateY(-10px)rotate(-3deg)}}
-</style>
+
 
 <!-- ═══════ MAIN ═══════ -->
 <div id="main">
@@ -665,23 +742,28 @@ textarea.fi{min-height:90px;resize:vertical;}
           <div class="cg">
             <div class="ci"><input type="radio" name="tr" id="tv" value="voiture"/><label class="ch" for="tv">🚗 Voiture</label></div>
             <div class="ci"><input type="radio" name="tr" id="tt" value="train"/><label class="ch" for="tt">🚆 Train</label></div>
-            <div class="ci"><input type="radio" name="tr" id="tc" value="covoiturage"/><label class="ch" for="tc">🤝 Covoiturage</label></div>
-            <div class="ci"><input type="radio" name="tr" id="tvl" value="velo"/><label class="ch" for="tvl">🚲 Vélo</label></div>
             <div class="ci"><input type="radio" name="tr" id="ta" value="autre"/><label class="ch" for="ta">✨ Autre</label></div>
           </div>
         </div>
         <div class="fg-item" style="margin-bottom:22px;">
-          <label class="fl">Ville de départ</label>
+          <label class="fl">Ville de provenance</label>
           <div class="cg">
             <div class="ci"><input type="radio" name="dep" id="dp" value="paris"/><label class="ch" for="dp">🗼 Paris</label></div>
             <div class="ci"><input type="radio" name="dep" id="dl" value="lyon"/><label class="ch" for="dl">🦁 Lyon</label></div>
-            <div class="ci"><input type="radio" name="dep" id="dli" value="lille"/><label class="ch" for="dli">🍺 Lille</label></div>
+            <div class="ci"><input type="radio" name="dep" id="ddj" value="dijon"/><label class="ch" for="ddj">🍷 Dijon</label></div>
             <div class="ci"><input type="radio" name="dep" id="da" value="autre"/><label class="ch" for="da">📍 Autre</label></div>
           </div>
         </div>
-        <div class="fg-item">
-          <label class="fl" for="tdet">Précisions (gare, covoit', besoin d'un pickup…)</label>
-          <textarea class="fi" id="tdet" placeholder="Ex : j'arrive en train à Douai à 17h, besoin d'un pickup ! Ou : j'ai 2 places depuis Paris."></textarea>
+        <div class="fg-item" style="margin-bottom:16px;">
+          <label class="fl" for="tdet">Précisions transport</label>
+          <textarea class="fi" id="tdet" placeholder="Je pense pouvoir emmener des gens en covoiturage. / Je viens en train, il faudra venir me chercher !" style="min-height:80px;"></textarea>
+        </div>
+        <div style="background:var(--g6);border-radius:12px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;">
+          <span style="font-size:20px;flex-shrink:0;">🚌</span>
+          <div>
+            <p style="font-size:13px;font-weight:700;color:var(--g1);margin-bottom:4px;">Infos navettes &amp; covoiturage</p>
+            <p style="font-size:13px;color:var(--ink2);line-height:1.6;">Des navettes sont organisées depuis la <strong>gare de Tonnerre</strong> (à 15 min du lieu). Un groupe WhatsApp dédié au covoiturage est disponible — rejoignez-le pour vous organiser !</p>
+          </div>
         </div>
       </div>
     </div>
@@ -707,19 +789,15 @@ textarea.fi{min-height:90px;resize:vertical;}
 
     <!-- Régimes -->
     <div class="card reveal">
-      <div class="card-head ch-amber"><span class="chi">🥗</span><h3>Régimes alimentaires</h3></div>
+      <div class="card-head ch-amber"><span class="chi">🥗</span><h3>Régime alimentaire</h3></div>
       <div class="card-body">
         <p style="font-size:13px;color:var(--ink3);margin-bottom:14px;font-weight:600;">Cochez tout ce qui vous concerne</p>
         <div class="kg">
-          <div class="ki"><input type="checkbox" id="rv" name="regime" value="vegetarien"/><label class="kh" for="rv">🥦 Végétarien</label></div>
-          <div class="ki"><input type="checkbox" id="rvg" name="regime" value="vegan"/><label class="kh" for="rvg">🌱 Végan</label></div>
-          <div class="ki"><input type="checkbox" id="rg" name="regime" value="sans_gluten"/><label class="kh" for="rg">🌾 Sans gluten</label></div>
-          <div class="ki"><input type="checkbox" id="rh" name="regime" value="halal"/><label class="kh" for="rh">☪️ Halal</label></div>
-          <div class="ki"><input type="checkbox" id="ra" name="regime" value="allergies"/><label class="kh" for="ra">⚠️ Allergies</label></div>
-          <div class="ki"><input type="checkbox" id="ro" name="regime" value="omnivore"/><label class="kh" for="ro">🍖 Je mange tout</label></div>
+          <div class="ki"><input type="checkbox" id="rv" name="regime" value="herbe"/><label class="kh" for="rv">🌿 Je mange de l'herbe</label></div>
+          <div class="ki"><input type="checkbox" id="ro" name="regime" value="tout"/><label class="kh" for="ro">🍖 Je mange de tout</label></div>
         </div>
         <div class="fg-item" style="margin-top:18px;">
-          <label class="fl" for="rdet">Précisez allergies ou contraintes</label>
+          <label class="fl" for="rdet">Allergies ou contraintes à préciser</label>
           <input class="fi" type="text" id="rdet" placeholder="Ex : allergie aux noix, intolérance lactose…"/>
         </div>
       </div>
@@ -729,9 +807,13 @@ textarea.fi{min-height:90px;resize:vertical;}
     <div class="card reveal">
       <div class="card-head ch-amber"><span class="chi">🎪</span><h3>Un mot pour l'orga</h3></div>
       <div class="card-body">
+        <div style="background:var(--g6);border-radius:12px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;margin-bottom:18px;">
+          <span style="font-size:20px;flex-shrink:0;">💡</span>
+          <p style="font-size:13px;color:var(--ink2);line-height:1.65;">La <strong style="color:var(--g1);">journée du samedi est libre</strong> — si vous avez des idées ou une activité à proposer, on est preneurs ! Terrain de volley, spikeball, pétanque, atelier… n'hésitez pas à nous le dire !</p>
+        </div>
         <div class="fg-item">
-          <label class="fl" for="com">Idée, défi, message rigolo…</label>
-          <textarea class="fi" id="com" style="min-height:100px;" placeholder="Une idée d'animation, un défi, une dédicace pour le DJ set, vos talents cachés… ou juste un grand bonjour 🌻"></textarea>
+          <label class="fl" for="com">Idée, défi, message…</label>
+          <textarea class="fi" id="com" style="min-height:100px;" placeholder="Vous avez des idées ? Vous voulez proposer une activité ? Vous pensez ramener un truc ? Juste un petit bonjour ? 🌻"></textarea>
         </div>
       </div>
     </div>
@@ -776,7 +858,7 @@ textarea.fi{min-height:90px;resize:vertical;}
           </div>
         </div>
         <div style="margin-top:14px;">
-          <div class="ki"><input type="checkbox" id="wp" name="whatsapp"/><label class="kh" for="wp">✅ J'ai rejoint (ou vais rejoindre) le groupe</label></div>
+          <div class="ki"><input type="checkbox" id="wp" name="whatsapp" required/><label class="kh" for="wp">✅ J'ai rejoint (ou vais rejoindre) le groupe <span style="color:var(--r1);font-weight:900;">*</span></label></div>
         </div>
       </div>
     </div>
@@ -794,7 +876,7 @@ textarea.fi{min-height:90px;resize:vertical;}
           <p style="font-size:12px;opacity:.4;margin-top:12px;margin-bottom:0;">Inscription confirmée dès réception du paiement</p>
         </div>
         <div style="margin-top:14px;">
-          <div class="ki"><input type="checkbox" id="pay" name="paiement"/><label class="kh" for="pay">✅ J'ai effectué (ou vais effectuer) le paiement</label></div>
+          <div class="ki"><input type="checkbox" id="pay" name="paiement" required/><label class="kh" for="pay">✅ J'ai effectué (ou vais effectuer) le paiement <span style="color:var(--r1);font-weight:900;">*</span></label></div>
         </div>
       </div>
     </div>
@@ -835,41 +917,31 @@ textarea.fi{min-height:90px;resize:vertical;}
       <div class="ic">
         <div class="ic-ttl"><span>⛺</span> Camping</div>
         <ul>
-          <li>Camping sauvage sur la prairie du moulin</li>
-          <li>Tente + sac de couchage par vos soins</li>
-          <li>Pas de camping-car ni caravane</li>
-          <li>Emplacements : premier arrivé, premier servi</li>
+          <li>Camping sur place dans un pré autour du moulin</li>
+          <li>Tente + sac de couchage à prévoir par vos soins</li>
         </ul>
       </div>
       <div class="ic">
         <div class="ic-ttl"><span>🎒</span> Affaires</div>
         <ul>
-          <li>Tente, tapis de sol, sac de couchage chaud</li>
-          <li>Lampe frontale — indispensable !</li>
+          <li>Tente, tapis de sol, couchage chaud</li>
+          <li>Lampe frontale</li>
           <li>Vêtements chauds pour la nuit</li>
-          <li>Bottes ou chaussures de rando</li>
-          <li>Gobelet réutilisable (zéro déchet ✊)</li>
+          <li>Boules Quies conseillées, la musique peut être forte !</li>
+          <li>Chaussures de baignade</li>
+          <li>Maillot de bain (possibilité de se baigner 🏊)</li>
+          <li>Hamac — nombreux arbres dispo 😉</li>
         </ul>
       </div>
       <div class="ic">
         <div class="ic-ttl"><span>🎵</span> Programme</div>
         <ul>
-          <li>Musique live &amp; DJ set le soir</li>
-          <li>Feu de camp &amp; ambiance guinguette</li>
-          <li>Repas partagés, atelier cuisine</li>
-          <li>Balade dans les champs le matin</li>
-          <li>Pétanque, jeux de plein air</li>
-          <li>Grande tablée du dimanche midi</li>
-        </ul>
-      </div>
-      <div class="ic">
-        <div class="ic-ttl"><span>📍</span> Accès</div>
-        <ul>
-          <li>Adresse envoyée aux inscrits confirmés</li>
-          <li>Navette depuis la gare (selon demandes)</li>
-          <li>Parking disponible sur place</li>
-          <li>Eau potable et sanitaires sur place</li>
-          <li>Bar asso — pas d'alcool extérieur svp</li>
+          <li>Musique &amp; DJ set le soir 🎶</li>
+          <li>Bar avec différentes boissons pour tous 🍹</li>
+          <li>Repas barbecue, salade, frites 🍖</li>
+          <li>PDJ brioche, pain, café ☕</li>
+          <li>Activités diverses le dimanche</li>
+          <li>Terrain de volley 🏐</li>
         </ul>
       </div>
     </div>
@@ -943,7 +1015,91 @@ function enterForm(){
   }
 })();
 
-// REVEAL
+// BIRDS — Web Audio API procedural birdsong (no external files needed)
+(function(){
+  let ctx = null;
+  let started = false;
+
+  function initAudio(){
+    if(started) return;
+    started = true;
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+
+    // master gain — soft background level
+    const master = ctx.createGain();
+    master.gain.value = 0.18;
+    master.connect(ctx.destination);
+
+    // fade in gently
+    master.gain.setValueAtTime(0, ctx.currentTime);
+    master.gain.linearRampToValueAtTime(0.18, ctx.currentTime + 4);
+
+    // --- chirp generator ---
+    function chirp(time, freq, duration, gainVal, harmonics){
+      harmonics = harmonics || [1, 1.5, 2];
+      harmonics.forEach(function(h){
+        const osc = ctx.createOscillator();
+        const g   = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq * h, time);
+        osc.frequency.exponentialRampToValueAtTime(freq * h * 1.25, time + duration * 0.4);
+        osc.frequency.exponentialRampToValueAtTime(freq * h * 0.9, time + duration);
+        g.gain.setValueAtTime(0, time);
+        g.gain.linearRampToValueAtTime(gainVal / h, time + duration * 0.1);
+        g.gain.exponentialRampToValueAtTime(0.0001, time + duration);
+        osc.connect(g); g.connect(master);
+        osc.start(time); osc.stop(time + duration + 0.05);
+      });
+    }
+
+    // --- trill: rapid sequence of chirps ---
+    function trill(startTime, baseFreq, notes, gap, gainVal){
+      for(let i=0; i<notes; i++){
+        const f = baseFreq * (1 + (Math.random()-0.5)*0.08);
+        chirp(startTime + i*gap, f, gap*0.9, gainVal, [1, 2]);
+      }
+    }
+
+    // --- song pattern: schedule a "bird" at random intervals ---
+    function scheduleBird(){
+      if(!ctx) return;
+      const now = ctx.currentTime;
+
+      // pick a random bird "personality"
+      const type = Math.floor(Math.random()*4);
+      if(type === 0){
+        // mésange: short rising double chirp
+        chirp(now,       1800 + Math.random()*300, 0.08, 0.9, [1,2]);
+        chirp(now + 0.12, 2200 + Math.random()*300, 0.07, 0.7, [1,2]);
+      } else if(type === 1){
+        // merle: melodic trill
+        trill(now, 1400 + Math.random()*400, 4 + Math.floor(Math.random()*4), 0.06, 0.55);
+      } else if(type === 2){
+        // pinson: descending phrase
+        const base = 2400 + Math.random()*400;
+        [0, 0.1, 0.2, 0.32, 0.46].forEach(function(t, i){
+          chirp(now+t, base - i*120, 0.09, 0.6, [1,1.5]);
+        });
+      } else {
+        // coucou lointain: two soft low tones
+        chirp(now,      600 + Math.random()*80, 0.25, 0.35, [1]);
+        chirp(now+0.38, 500 + Math.random()*60, 0.25, 0.28, [1]);
+      }
+
+      // next bird in 2–9 seconds
+      const next = 2000 + Math.random()*7000;
+      setTimeout(scheduleBird, next);
+    }
+
+    // start first bird after 1.5s
+    setTimeout(scheduleBird, 1500);
+  }
+
+  // start on first interaction (click or scroll) — required by browsers
+  ['click','touchstart','keydown','scroll'].forEach(function(evt){
+    document.addEventListener(evt, initAudio, {once:true, passive:true});
+  });
+})();
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
@@ -953,6 +1109,12 @@ function submitForm(){
   const d=document.querySelector('input[name="dates"]:checked');
   if(!p||!n||!e||!t2){alert('Merci de remplir vos nom, prénom, email et téléphone 🌿');return;}
   if(!d){alert('Quand venez-vous ? Vendredi, samedi, ou les deux ? 😊');return;}
+  if(!document.getElementById('wp').checked){
+    alert('Merci de confirmer que vous avez rejoint le groupe WhatsApp 💬');return;
+  }
+  if(!document.getElementById('pay').checked){
+    alert('Merci de confirmer que vous avez effectué (ou allez effectuer) le paiement 💸');return;
+  }
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){alert("L'adresse email ne semble pas valide 🌱");return;}
   const tr=document.querySelector('input[name="tr"]:checked');
   const dep=document.querySelector('input[name="dep"]:checked');
