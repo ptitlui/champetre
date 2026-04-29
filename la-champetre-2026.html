@@ -1135,7 +1135,7 @@ function submitForm(){
   };
   fetch('https://script.google.com/macros/s/AKfycbzBvxmUA2UZgKDf5jqhCW6TEJyR0lXm4hxaWKKW3KMQOaXA2wL_PKQn3cnm3fRL-lrvFg/exec',{
     method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    headers:{'Content-Type':'text/plain'},
     body:JSON.stringify(data)
   }).then(()=>ok()).catch(()=>ok());
 }
