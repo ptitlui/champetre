@@ -593,7 +593,7 @@ textarea.fi{min-height:90px;resize:vertical;}
     </div>
 
     <p class="inv-msg">
-      Un week-end au <strong>moulin en pleine campagne</strong> —
+      Un week-end <strong>en pleine campagne</strong> —
       camper, danser, partager entre amis loin de tout. 🔥
     </p>
 
@@ -669,7 +669,7 @@ textarea.fi{min-height:90px;resize:vertical;}
     </div>
     <h1 class="hero-title">La Champêtre</h1>
     <div class="hero-italic">Édition 2026</div>
-    <p class="hero-desc">Un week-end au moulin, en pleine campagne — camper, danser, partager et se retrouver entre amis loin de tout.</p>
+    <p class="hero-desc">Un week-end en pleine campagne — camper, danser, partager et se retrouver entre amis loin de tout.</p>
     <div class="hero-chips">
       <div class="hchip">🌾 Au moulin</div>
       <div class="hchip">⛺ Camping sur place</div>
@@ -720,7 +720,7 @@ textarea.fi{min-height:90px;resize:vertical;}
 
     <!-- Dates -->
     <div class="card reveal">
-      <div class="card-head"><span class="chi">📅</span><h3>Je viens…</h3></div>
+      <div class="card-head"><span class="chi">📅</span><h3>Je viens… <span style="color:var(--a3);font-size:10px;">*</span></h3></div>
       <div class="card-body">
         <div class="opt-grid">
           <div class="opt-card"><input type="radio" name="dates" id="ven" value="vendredi"/>
@@ -738,7 +738,7 @@ textarea.fi{min-height:90px;resize:vertical;}
       <div class="card-head"><span class="chi">🚗</span><h3>Comment vous venez ?</h3></div>
       <div class="card-body">
         <div class="fg-item" style="margin-bottom:22px;">
-          <label class="fl">Mode de transport</label>
+          <label class="fl">Mode de transport <span style="color:var(--r1);">*</span></label>
           <div class="cg">
             <div class="ci"><input type="radio" name="tr" id="tv" value="voiture"/><label class="ch" for="tv">🚗 Voiture</label></div>
             <div class="ci"><input type="radio" name="tr" id="tt" value="train"/><label class="ch" for="tt">🚆 Train</label></div>
@@ -791,7 +791,7 @@ textarea.fi{min-height:90px;resize:vertical;}
     <div class="card reveal">
       <div class="card-head ch-amber"><span class="chi">🥗</span><h3>Régime alimentaire</h3></div>
       <div class="card-body">
-        <p style="font-size:13px;color:var(--ink3);margin-bottom:14px;font-weight:600;">Cochez tout ce qui vous concerne</p>
+        <p style="font-size:13px;color:var(--ink3);margin-bottom:14px;font-weight:600;">Cochez tout ce qui vous concerne <span style="color:var(--r1);">*</span></p>
         <div class="kg">
           <div class="ki"><input type="checkbox" id="rv" name="regime" value="herbe"/><label class="kh" for="rv">🌿 Je mange de l'herbe</label></div>
           <div class="ki"><input type="checkbox" id="ro" name="regime" value="tout"/><label class="kh" for="ro">🍖 Je mange de tout</label></div>
@@ -946,14 +946,15 @@ textarea.fi{min-height:90px;resize:vertical;}
       </div>
     </div>
 
-    <div style="text-align:center;margin-top:50px;">
-      <div class="cf">
-        <div class="flame flame1"></div><div class="flame flame2"></div>
-        <div class="flame flame3"></div><div class="flame flame4"></div>
+      <div style="text-align:center;margin-top:50px;">
+        <p style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px;">Un week-end en pleine campagne</p>
+        <div class="cf">
+          <div class="flame flame1"></div><div class="flame flame2"></div>
+          <div class="flame flame3"></div><div class="flame flame4"></div>
+        </div>
+        <div style="height:5px;width:50px;background:#1e3a0e;border-radius:3px;margin:2px auto 16px;"></div>
+        <p style="font-family:'Fraunces',serif;font-style:italic;font-size:20px;color:rgba(255,255,255,.35);">À très vite dans les champs ! 🌾</p>
       </div>
-      <div style="height:5px;width:50px;background:#1e3a0e;border-radius:3px;margin:2px auto 16px;"></div>
-      <p style="font-family:'Fraunces',serif;font-style:italic;font-size:20px;color:rgba(255,255,255,.35);">À très vite au moulin !</p>
-    </div>
   </div>
 </section>
 
@@ -1109,6 +1110,10 @@ function submitForm(){
   const d=document.querySelector('input[name="dates"]:checked');
   if(!p||!n||!e||!t2){alert('Merci de remplir vos nom, prénom, email et téléphone 🌿');return;}
   if(!d){alert('Quand venez-vous ? Vendredi, samedi, ou les deux ? 😊');return;}
+  const tr=document.querySelector('input[name="tr"]:checked');
+  if(!tr){alert('Merci d\'indiquer votre mode de transport 🚗');return;}
+  const reg=[...document.querySelectorAll('input[name="regime"]:checked')].map(r=>r.value);
+  if(reg.length===0){alert('Merci d\'indiquer votre régime alimentaire 🥗');return;}
   if(!document.getElementById('wp').checked){
     alert('Merci de confirmer que vous avez rejoint le groupe WhatsApp 💬');return;
   }
@@ -1116,9 +1121,7 @@ function submitForm(){
     alert('Merci de confirmer que vous avez effectué (ou allez effectuer) le paiement 💸');return;
   }
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){alert("L'adresse email ne semble pas valide 🌱");return;}
-  const tr=document.querySelector('input[name="tr"]:checked');
   const dep=document.querySelector('input[name="dep"]:checked');
-  const reg=[...document.querySelectorAll('input[name="regime"]:checked')].map(r=>r.value);
   const data={
     timestamp:new Date().toISOString(),
     prenom:p,nom:n,email:e,tel:t2,
