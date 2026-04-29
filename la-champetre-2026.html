@@ -21,63 +21,139 @@ html{scroll-behavior:smooth;}
 body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;}
 
 /* ═══════════════════════════════════════════
-   INTRO
+   INVITATION SCREEN
 ═══════════════════════════════════════════ */
-#intro{
+#invite{
   position:fixed;inset:0;z-index:1000;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  cursor:pointer;overflow:hidden;
-  background:linear-gradient(160deg, var(--g1) 0%, var(--g2) 55%, var(--g3) 100%);
-  transition:opacity 1.2s ease;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  background:linear-gradient(150deg, var(--g1) 0%, #1a3a0a 50%, var(--g2) 100%);
+  transition:opacity 1s ease;
 }
-#intro.out{opacity:0;pointer-events:none;}
+#invite.out{opacity:0;pointer-events:none;}
 
-/* floating shapes deco */
-.intro-shape{position:absolute;border-radius:50%;opacity:0.12;}
-.is1{width:300px;height:300px;background:var(--g4);top:-80px;right:-60px;}
-.is2{width:200px;height:200px;background:var(--a3);bottom:-50px;left:-40px;}
-.is3{width:120px;height:120px;background:var(--g5);bottom:80px;right:10%;}
-.is4{width:80px;height:80px;background:var(--a2);top:15%;left:8%;}
+/* background blobs */
+.inv-blob{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;}
+.ib1{width:500px;height:500px;background:rgba(95,160,53,.25);top:-150px;right:-100px;}
+.ib2{width:350px;height:350px;background:rgba(232,148,32,.15);bottom:-100px;left:-80px;}
+.ib3{width:200px;height:200px;background:rgba(140,196,90,.2);bottom:10%;right:15%;}
 
-.i-content{position:relative;z-index:2;text-align:center;padding:0 24px;}
+/* floating icons behind card */
+.inv-icons{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.inv-ico{position:absolute;animation:inv-float linear infinite;}
+@keyframes inv-float{
+  0%  {transform:translateY(0) rotate(0deg);   opacity:0;}
+  10% {opacity:1;}
+  90% {opacity:.6;}
+  100%{transform:translateY(-100vh) rotate(360deg); opacity:0;}
+}
 
-.i-tag{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,0.15);
-  color:rgba(255,255,255,0.9);
-  padding:8px 20px;border-radius:50px;
-  font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
-  margin-bottom:24px;
-  opacity:0;animation:fadeup .8s ease forwards .3s;
+/* THE CARD */
+.inv-card{
+  position:relative;z-index:2;
+  background:var(--cream);
+  border-radius:28px;
+  padding:52px 48px 44px;
+  max-width:480px;width:90%;
+  text-align:center;
+  box-shadow:0 40px 100px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.08);
+  opacity:0;
+  animation:card-appear .9s cubic-bezier(.34,1.2,.64,1) forwards .4s;
 }
-.i-title{
-  font-family:'Fraunces',serif;font-weight:900;
-  font-size:clamp(64px,13vw,148px);
-  color:#fff;line-height:.95;
-  margin-bottom:10px;
-  opacity:0;animation:fadeup 1s ease forwards .6s;
+@keyframes card-appear{
+  from{opacity:0;transform:scale(.85) translateY(30px);}
+  to  {opacity:1;transform:scale(1)   translateY(0);}
 }
-.i-sub{
-  font-family:'Fraunces',serif;font-style:italic;font-weight:700;
-  font-size:clamp(16px,3vw,30px);
-  color:rgba(255,255,255,0.75);
-  margin-bottom:36px;
-  opacity:0;animation:fadeup .8s ease forwards .9s;
+
+/* envelope wax seal deco */
+.inv-seal{
+  width:64px;height:64px;border-radius:50%;
+  background:linear-gradient(135deg,var(--g2),var(--g1));
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;
+  margin:0 auto 24px;
+  box-shadow:0 4px 20px rgba(45,90,27,.35);
+  animation:seal-pop .6s cubic-bezier(.34,1.56,.64,1) forwards .9s;
+  opacity:0;transform:scale(0);
 }
-.i-dots{
-  display:flex;align-items:center;gap:8px;justify-content:center;
-  margin-bottom:32px;
+@keyframes seal-pop{to{opacity:1;transform:scale(1);}}
+
+.inv-pre{
+  font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:14px;
   opacity:0;animation:fadeup .7s ease forwards 1.1s;
 }
-.i-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.4);}
-.i-dot.big{width:8px;height:8px;background:rgba(255,255,255,0.8);}
-.i-hint{
-  font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
-  color:rgba(255,255,255,0.45);
-  opacity:0;animation:fadeup .7s ease forwards 1.4s, blink 2.5s ease-in-out infinite 2s;
+.inv-event{
+  font-family:'Fraunces',serif;font-weight:900;
+  font-size:clamp(44px,9vw,76px);
+  color:var(--g1);line-height:.95;
+  margin-bottom:6px;
+  opacity:0;animation:fadeup .8s ease forwards 1.3s;
 }
-@keyframes blink{0%,100%{opacity:.3}50%{opacity:.8}}
-@keyframes fadeup{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.inv-edition{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:700;
+  font-size:clamp(16px,3vw,22px);
+  color:var(--a1);margin-bottom:20px;
+  opacity:0;animation:fadeup .7s ease forwards 1.5s;
+}
+
+/* divider */
+.inv-divider{
+  display:flex;align-items:center;gap:12px;
+  margin:0 auto 20px;max-width:240px;
+  opacity:0;animation:fadeup .6s ease forwards 1.65s;
+}
+.inv-divider .ln{flex:1;height:1.5px;background:var(--g5);}
+.inv-divider .dm{width:6px;height:6px;background:var(--g4);transform:rotate(45deg);flex-shrink:0;}
+
+.inv-msg{
+  font-size:16px;line-height:1.75;color:var(--ink2);
+  margin-bottom:28px;font-weight:400;
+  opacity:0;animation:fadeup .7s ease forwards 1.8s;
+}
+.inv-msg strong{color:var(--g1);font-weight:800;}
+
+.inv-details{
+  display:flex;justify-content:center;flex-wrap:wrap;gap:8px;
+  margin-bottom:32px;
+  opacity:0;animation:fadeup .7s ease forwards 2s;
+}
+.inv-chip{
+  background:var(--g6);color:var(--g1);
+  padding:7px 16px;border-radius:50px;
+  font-size:13px;font-weight:700;
+  display:flex;align-items:center;gap:6px;
+}
+
+/* CTA button */
+.inv-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:18px 40px;border-radius:50px;border:none;
+  background:linear-gradient(135deg, var(--g2), var(--g1));
+  color:#fff;
+  font-family:'Nunito',sans-serif;
+  font-size:17px;font-weight:800;
+  cursor:pointer;
+  box-shadow:0 8px 30px rgba(45,90,27,.4);
+  transition:all .25s;
+  opacity:0;animation:fadeup .8s ease forwards 2.2s;
+  position:relative;overflow:hidden;
+}
+.inv-btn::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);
+  border-radius:50px;
+}
+.inv-btn:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(45,90,27,.5);}
+.inv-btn:active{transform:translateY(0);}
+.inv-btn-arrow{font-size:20px;transition:transform .2s;}
+.inv-btn:hover .inv-btn-arrow{transform:translateX(4px);}
+
+/* bottom note */
+.inv-note{
+  font-size:12px;color:var(--ink3);margin-top:16px;
+  opacity:0;animation:fadeup .6s ease forwards 2.4s;
+}
 
 /* ═══════════════════════════════════════════
    GLOBAL
@@ -447,31 +523,42 @@ textarea.fi{min-height:90px;resize:vertical;}
 </head>
 <body>
 
-<!-- ═══════ INTRO ═══════ -->
-<div id="intro" onclick="skipIntro()">
-  <div class="intro-shape is1"></div>
-  <div class="intro-shape is2"></div>
-  <div class="intro-shape is3"></div>
-  <div class="intro-shape is4"></div>
+<!-- ═══════ INVITATION ═══════ -->
+<div id="invite">
+  <div class="inv-blob ib1"></div>
+  <div class="inv-blob ib2"></div>
+  <div class="inv-blob ib3"></div>
+  <div class="inv-icons" id="inv-icons"></div>
 
-  <!-- floating icons -->
-  <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden;">
-    <span style="position:absolute;font-size:36px;top:12%;left:7%;opacity:.25;animation:float1 4s ease-in-out infinite;">⛺</span>
-    <span style="position:absolute;font-size:28px;top:18%;right:9%;opacity:.25;animation:float2 5s ease-in-out infinite 1s;">🌾</span>
-    <span style="position:absolute;font-size:32px;bottom:18%;left:9%;opacity:.25;animation:float1 4.5s ease-in-out infinite .5s;">🔥</span>
-    <span style="position:absolute;font-size:24px;bottom:22%;right:7%;opacity:.25;animation:float2 3.5s ease-in-out infinite 2s;">🎵</span>
-    <span style="position:absolute;font-size:20px;top:40%;left:4%;opacity:.2;animation:float1 6s ease-in-out infinite 1.5s;">🌿</span>
-    <span style="position:absolute;font-size:20px;top:38%;right:5%;opacity:.2;animation:float2 5.5s ease-in-out infinite .8s;">🌻</span>
-  </div>
+  <div class="inv-card">
+    <div class="inv-seal">🌾</div>
+    <div class="inv-pre">Voici votre invitation pour</div>
+    <div class="inv-event">La Champêtre</div>
+    <div class="inv-edition">Édition 2026</div>
 
-  <div class="i-content">
-    <div class="i-tag">🌾 Soirée au moulin · Été 2026</div>
-    <div class="i-title">La Champêtre</div>
-    <div class="i-sub">Édition 2026</div>
-    <div class="i-dots">
-      <div class="i-dot"></div><div class="i-dot big"></div><div class="i-dot"></div>
+    <div class="inv-divider">
+      <div class="ln"></div><div class="dm"></div>
+      <div style="font-size:16px;">🌿</div>
+      <div class="dm"></div><div class="ln"></div>
     </div>
-    <div class="i-hint">Cliquer pour s'inscrire ↓</div>
+
+    <p class="inv-msg">
+      Un week-end au <strong>moulin en pleine campagne</strong> —<br/>
+      camper, danser, partager et profiter<br/>
+      entre amis loin de tout. 🔥
+    </p>
+
+    <div class="inv-details">
+      <div class="inv-chip">⛺ Camping sur place</div>
+      <div class="inv-chip">🎵 Vendredi &amp; Samedi</div>
+      <div class="inv-chip">🌾 Au moulin</div>
+    </div>
+
+    <button class="inv-btn" onclick="enterForm()">
+      S'inscrire maintenant
+      <span class="inv-btn-arrow">→</span>
+    </button>
+    <div class="inv-note">Vendredi ou Samedi · 20€ &nbsp;|&nbsp; Week-end complet · 35€</div>
   </div>
 </div>
 
@@ -817,11 +904,33 @@ textarea.fi{min-height:90px;resize:vertical;}
 </div>
 
 <script>
-// INTRO
-const introEl=document.getElementById('intro');
-let t=setTimeout(skip,6000);
-function skipIntro(){clearTimeout(t);skip();}
-function skip(){introEl.classList.add('out');setTimeout(()=>introEl.style.display='none',1300);}
+// INVITATION
+const inviteEl = document.getElementById('invite');
+
+// Generate floating rising icons
+(function(){
+  const icons = ['⛺','🌾','🔥','🎵','🌿','🌻','🍃','✨','🌙','🎶','🌸','🍀'];
+  const container = document.getElementById('inv-icons');
+  function spawn(){
+    const el = document.createElement('span');
+    const ico = icons[Math.floor(Math.random()*icons.length)];
+    const size = 18 + Math.random()*28;
+    const left = 5 + Math.random()*90;
+    const dur  = 6 + Math.random()*8;
+    const delay = Math.random()*2;
+    el.textContent = ico;
+    el.style.cssText = `position:absolute;font-size:${size}px;left:${left}%;bottom:-60px;animation:inv-float ${dur}s ${delay}s linear forwards;pointer-events:none;`;
+    container.appendChild(el);
+    setTimeout(()=>el.remove(), (dur+delay)*1000);
+  }
+  spawn();
+  setInterval(spawn, 700);
+})();
+
+function enterForm(){
+  inviteEl.classList.add('out');
+  setTimeout(()=>{ inviteEl.style.display='none'; }, 1100);
+}
 
 // STARS
 (function(){
