@@ -99,7 +99,7 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);ov
   position:relative;
   background:var(--g6);
   overflow:hidden;
-  padding:72px 24px 0;
+  padding:72px 24px 80px;
   text-align:center;
 }
 
@@ -151,12 +151,6 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);ov
   display:flex;align-items:center;gap:7px;
 }
 
-/* SVG illustration strip at bottom of hero */
-.hero-scene{
-  position:relative;width:100%;height:220px;
-  margin-top:16px;flex-shrink:0;
-  display:block;
-}
 
 /* ═══════════════════════════════════════════
    SECTION STYLES
@@ -191,7 +185,7 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);ov
   box-shadow:0 2px 20px rgba(0,0,0,0.06);
   transition:transform .25s,box-shadow .25s;
 }
-.card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,0.1);}
+.card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.1);}
 
 .sec-night .card{background:rgba(255,255,255,0.07);box-shadow:none;border:1.5px solid rgba(255,255,255,0.1);}
 .sec-night .card:hover{background:rgba(255,255,255,0.1);}
@@ -221,8 +215,7 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--ink);ov
 .fg-item.full{grid-column:1/-1;}
 
 .fl{
-  font-size:11px;font-weight:800;letter-spacing:2.5px;
-  text-transform:uppercase;color:var(--ink3);
+  font-size:13px;font-weight:700;color:var(--ink3);
 }
 .sec-night .fl{color:var(--g5);}
 
@@ -404,11 +397,11 @@ textarea.fi{min-height:90px;resize:vertical;}
 
 /* campfire */
 .cf{display:flex;justify-content:center;align-items:flex-end;gap:1px;margin:28px auto 8px;width:fit-content;}
-.fl{border-radius:50% 50% 20% 20%/60% 60% 40% 40%;transform-origin:bottom center;animation:flk .7s ease-in-out infinite alternate;}
-.fl1{width:11px;height:38px;background:#e84800;animation-delay:0s}
-.fl2{width:15px;height:54px;background:#ff6c00;animation-delay:.1s}
-.fl3{width:13px;height:46px;background:#ffa020;animation-delay:.2s}
-.fl4{width:9px;height:30px;background:#ffd040;animation-delay:.05s}
+.flame{border-radius:50% 50% 20% 20%/60% 60% 40% 40%;transform-origin:bottom center;animation:flk .7s ease-in-out infinite alternate;}
+.flame1{width:11px;height:38px;background:#e84800;animation-delay:0s}
+.flame2{width:15px;height:54px;background:#ff6c00;animation-delay:.1s}
+.flame3{width:13px;height:46px;background:#ffa020;animation-delay:.2s}
+.flame4{width:9px;height:30px;background:#ffd040;animation-delay:.05s}
 @keyframes flk{0%{transform:scaleX(.9)scaleY(1)rotate(-2deg)}100%{transform:scaleX(1.1)scaleY(1.1)rotate(2deg)}}
 
 /* footer */
@@ -418,8 +411,8 @@ textarea.fi{min-height:90px;resize:vertical;}
 .footer a{color:rgba(255,255,255,.3);}
 
 /* reveal */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease;}
-.reveal.vis{opacity:1;transform:translateY(0);}
+.reveal{opacity:0;transition:opacity .65s ease;}
+.reveal.vis{opacity:1;}
 
 /* success */
 .sov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;align-items:center;justify-content:center;}
@@ -521,139 +514,12 @@ textarea.fi{min-height:90px;resize:vertical;}
     </div>
   </div>
 
-  <!-- SCENE ILLUSTRATION -->
-  <div class="hero-scene">
-    <svg viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet" style="width:100%;height:100%;display:block;">
-      <!-- sky gradient strip -->
-      <defs>
-        <linearGradient id="skyg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#c4e08a" stop-opacity=".4"/>
-          <stop offset="100%" stop-color="#8cc45a" stop-opacity=".15"/>
-        </linearGradient>
-        <linearGradient id="grassg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#5fa035"/>
-          <stop offset="100%" stop-color="#3e7a26"/>
-        </linearGradient>
-        <linearGradient id="pathg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#c4a870"/>
-          <stop offset="100%" stop-color="#a88a50"/>
-        </linearGradient>
-      </defs>
-
-      <!-- ground -->
-      <ellipse cx="450" cy="195" rx="500" ry="50" fill="url(#grassg)"/>
-      <rect x="0" y="185" width="900" height="35" fill="#3e7a26"/>
-
-      <!-- path -->
-      <ellipse cx="450" cy="198" rx="55" ry="22" fill="url(#pathg)" opacity=".7"/>
-      <rect x="415" y="175" width="70" height="45" fill="url(#pathg)" opacity=".5"/>
-
-      <!-- hills bg -->
-      <ellipse cx="150" cy="210" rx="220" ry="80" fill="#5fa035" opacity=".5"/>
-      <ellipse cx="760" cy="215" rx="250" ry="75" fill="#4a8a2a" opacity=".4"/>
-
-      <!-- TREE left 1 -->
-      <rect x="62" y="110" width="10" height="80" rx="5" fill="#6b3d1e"/>
-      <ellipse cx="67" cy="102" rx="34" ry="54" fill="#2d5a1b"/>
-      <ellipse cx="67" cy="82" rx="24" ry="40" fill="#3e7a26"/>
-      <!-- TREE left 2 -->
-      <rect x="108" y="125" width="8" height="65" rx="4" fill="#6b3d1e"/>
-      <ellipse cx="112" cy="118" rx="26" ry="44" fill="#3e7a26"/>
-      <ellipse cx="112" cy="100" rx="18" ry="32" fill="#5fa035"/>
-
-      <!-- TREE right 1 -->
-      <rect x="820" y="108" width="10" height="82" rx="5" fill="#6b3d1e"/>
-      <ellipse cx="825" cy="100" rx="36" ry="56" fill="#2d5a1b"/>
-      <ellipse cx="825" cy="78" rx="26" ry="42" fill="#3e7a26"/>
-      <!-- TREE right 2 -->
-      <rect x="782" y="122" width="8" height="68" rx="4" fill="#6b3d1e"/>
-      <ellipse cx="786" cy="116" rx="28" ry="46" fill="#3e7a26"/>
-      <ellipse cx="786" cy="96" rx="19" ry="33" fill="#5fa035"/>
-
-      <!-- FENCE left -->
-      <g fill="#8b5e30" stroke="#6b4018" stroke-width="1">
-        <rect x="140" y="167" width="6" height="28" rx="2"/>
-        <rect x="185" y="165" width="6" height="30" rx="2"/>
-        <rect x="230" y="167" width="6" height="28" rx="2"/>
-        <rect x="140" y="174" width="96" height="4" rx="2"/>
-        <rect x="140" y="183" width="96" height="3" rx="1"/>
-      </g>
-      <!-- FENCE right -->
-      <g fill="#8b5e30" stroke="#6b4018" stroke-width="1">
-        <rect x="660" y="167" width="6" height="28" rx="2"/>
-        <rect x="705" y="165" width="6" height="30" rx="2"/>
-        <rect x="750" y="167" width="6" height="28" rx="2"/>
-        <rect x="660" y="174" width="96" height="4" rx="2"/>
-        <rect x="660" y="183" width="96" height="3" rx="1"/>
-      </g>
-
-      <!-- TENT 1 — orange (left) -->
-      <g transform="translate(270,118)">
-        <polygon points="55,72 0,72 27,8" fill="#e05030"/>
-        <polygon points="55,72 36,72 55,30" fill="#b83020" opacity=".7"/>
-        <polygon points="19,72 36,72 27,40" fill="#1a0a04" opacity=".85"/>
-        <rect x="2" y="70" width="51" height="4" rx="2" fill="#8b5e30"/>
-      </g>
-      <!-- TENT 2 — green (center) -->
-      <g transform="translate(400,108)">
-        <polygon points="65,82 0,82 32,6" fill="#3e7a26"/>
-        <polygon points="65,82 42,82 65,32" fill="#2d5a1b" opacity=".7"/>
-        <polygon points="22,82 42,82 32,45" fill="#0a1206" opacity=".85"/>
-        <rect x="2" y="80" width="61" height="4" rx="2" fill="#8b5e30"/>
-      </g>
-      <!-- TENT 3 — amber (right) -->
-      <g transform="translate(548,122)">
-        <polygon points="52,68 0,68 26,10" fill="#e89420"/>
-        <polygon points="52,68 34,68 52,28" fill="#b87010" opacity=".7"/>
-        <polygon points="18,68 34,68 26,38" fill="#180c00" opacity=".85"/>
-        <rect x="2" y="66" width="48" height="4" rx="2" fill="#8b5e30"/>
-      </g>
-
-      <!-- CAMPFIRE center -->
-      <g transform="translate(434,155)">
-        <line x1="-18" y1="14" x2="18" y2="6" stroke="#6b3d1e" stroke-width="6" stroke-linecap="round"/>
-        <line x1="-14" y1="6" x2="14" y2="14" stroke="#8b5020" stroke-width="6" stroke-linecap="round"/>
-        <ellipse cx="0" cy="12" rx="14" ry="5" fill="#ff6820" opacity=".6"/>
-        <!-- flat flame shapes -->
-        <polygon points="0,-18 -8,4 8,4" fill="#ff4500" opacity=".9"/>
-        <polygon points="0,-26 -5,1 5,1" fill="#ff8800"/>
-        <polygon points="0,-18 -3,2 3,2" fill="#ffd040"/>
-      </g>
-
-      <!-- wildflowers -->
-      <g opacity=".7">
-        <circle cx="180" cy="182" r="3.5" fill="#ff6b9d"/>
-        <circle cx="200" cy="179" r="2.5" fill="#ffd700"/>
-        <circle cx="350" cy="181" r="3" fill="#ff6b9d"/>
-        <circle cx="370" cy="179" r="2" fill="#ffd700"/>
-        <circle cx="530" cy="182" r="3" fill="#ffd700"/>
-        <circle cx="550" cy="180" r="2.5" fill="#ff6b9d"/>
-        <circle cx="680" cy="181" r="3.5" fill="#ff6b9d"/>
-        <circle cx="700" cy="179" r="2.5" fill="#ffd700"/>
-      </g>
-
-      <!-- sun glow -->
-      <circle cx="820" cy="30" r="38" fill="#fde8a0" opacity=".5"/>
-      <circle cx="820" cy="30" r="26" fill="#ffd040" opacity=".7"/>
-
-      <!-- birds -->
-      <g stroke="#2d5a1b" stroke-width="1.8" fill="none" opacity=".5">
-        <path d="M320,30 Q326,24 332,30"/>
-        <path d="M334,30 Q340,24 346,30"/>
-        <path d="M355,22 Q360,16 365,22"/>
-        <path d="M367,22 Q372,16 377,22"/>
-      </g>
-
-      <!-- moulin silhouette (right distance) -->
-      <g transform="translate(730,60)" opacity=".35" fill="#2d5a1b">
-        <rect x="17" y="52" width="10" height="60" rx="3"/>
-        <circle cx="22" cy="48" r="8"/>
-        <rect x="19" y="12" width="6" height="38"/>
-        <rect x="3" y="42" width="38" height="6"/>
-        <rect x="11" y="20" width="22" height="5" transform="rotate(45,22,45)"/>
-        <rect x="11" y="20" width="22" height="5" transform="rotate(-45,22,45)"/>
-      </g>
-    </svg>
+  <!-- more floating icons lower in hero -->
+  <div style="position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;">
+    <span style="position:absolute;font-size:70px;bottom:8%;left:5%;opacity:.1;animation:float1 4s ease-in-out infinite 1.2s;">⛺</span>
+    <span style="position:absolute;font-size:56px;bottom:10%;right:5%;opacity:.1;animation:float2 5s ease-in-out infinite .6s;">🔥</span>
+    <span style="position:absolute;font-size:44px;bottom:15%;left:20%;opacity:.08;animation:float1 6s ease-in-out infinite 2s;">🎵</span>
+    <span style="position:absolute;font-size:40px;bottom:12%;right:18%;opacity:.08;animation:float2 4.5s ease-in-out infinite 1.8s;">🌙</span>
   </div>
 </header>
 
@@ -923,8 +789,8 @@ textarea.fi{min-height:90px;resize:vertical;}
 
     <div style="text-align:center;margin-top:50px;">
       <div class="cf">
-        <div class="fl fl1"></div><div class="fl fl2"></div>
-        <div class="fl fl3"></div><div class="fl fl4"></div>
+        <div class="flame flame1"></div><div class="flame flame2"></div>
+        <div class="flame flame3"></div><div class="flame flame4"></div>
       </div>
       <div style="height:5px;width:50px;background:#1e3a0e;border-radius:3px;margin:2px auto 16px;"></div>
       <p style="font-family:'Fraunces',serif;font-style:italic;font-size:20px;color:rgba(255,255,255,.35);">À très vite au moulin !</p>
