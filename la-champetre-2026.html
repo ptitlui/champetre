@@ -723,11 +723,11 @@ textarea.fi{min-height:90px;resize:vertical;}
       <div class="card-head"><span class="chi">📅</span><h3>Je viens… <span style="color:var(--a3);font-size:10px;">*</span></h3></div>
       <div class="card-body">
         <div class="opt-grid">
-          <div class="opt-card"><input type="radio" name="dates" id="ven" value="vendredi"/>
+          <div class="opt-card"><input type="radio" name="dates" id="ven" value="Vendredi soir"/>
             <label class="opt-lbl" for="ven"><span class="oi">🌙</span><span class="ot">Vendredi soir</span><span class="op">20€</span><span class="os">Soirée + nuit</span></label></div>
-          <div class="opt-card"><input type="radio" name="dates" id="sam" value="samedi"/>
+          <div class="opt-card"><input type="radio" name="dates" id="sam" value="Samedi soir"/>
             <label class="opt-lbl" for="sam"><span class="oi">🌟</span><span class="ot">Samedi soir</span><span class="op">20€</span><span class="os">Grande soirée</span></label></div>
-          <div class="opt-card"><input type="radio" name="dates" id="deux" value="les_deux"/>
+          <div class="opt-card"><input type="radio" name="dates" id="deux" value="Week-end"/>
             <label class="opt-lbl" for="deux"><span class="oi">🎉</span><span class="ot">Les deux</span><span class="op">35€</span><span class="os">Week-end complet !</span></label></div>
         </div>
       </div>
@@ -740,18 +740,18 @@ textarea.fi{min-height:90px;resize:vertical;}
         <div class="fg-item" style="margin-bottom:22px;">
           <label class="fl">Mode de transport <span style="color:var(--r1);">*</span></label>
           <div class="cg">
-            <div class="ci"><input type="radio" name="tr" id="tv" value="voiture"/><label class="ch" for="tv">🚗 Voiture</label></div>
-            <div class="ci"><input type="radio" name="tr" id="tt" value="train"/><label class="ch" for="tt">🚆 Train</label></div>
-            <div class="ci"><input type="radio" name="tr" id="ta" value="autre"/><label class="ch" for="ta">✨ Autre</label></div>
+            <div class="ci"><input type="radio" name="tr" id="tv" value="Voiture"/><label class="ch" for="tv">🚗 Voiture</label></div>
+            <div class="ci"><input type="radio" name="tr" id="tt" value="Train"/><label class="ch" for="tt">🚆 Train</label></div>
+            <div class="ci"><input type="radio" name="tr" id="ta" value="Autre"/><label class="ch" for="ta">✨ Autre</label></div>
           </div>
         </div>
         <div class="fg-item" style="margin-bottom:22px;">
           <label class="fl">Ville de provenance</label>
           <div class="cg">
-            <div class="ci"><input type="radio" name="dep" id="dp" value="paris"/><label class="ch" for="dp">🗼 Paris</label></div>
-            <div class="ci"><input type="radio" name="dep" id="dl" value="lyon"/><label class="ch" for="dl">🦁 Lyon</label></div>
-            <div class="ci"><input type="radio" name="dep" id="ddj" value="dijon"/><label class="ch" for="ddj">🍷 Dijon</label></div>
-            <div class="ci"><input type="radio" name="dep" id="da" value="autre"/><label class="ch" for="da">📍 Autre</label></div>
+            <div class="ci"><input type="radio" name="dep" id="dp" value="Paris"/><label class="ch" for="dp">🗼 Paris</label></div>
+            <div class="ci"><input type="radio" name="dep" id="dl" value="Lyon"/><label class="ch" for="dl">🦁 Lyon</label></div>
+            <div class="ci"><input type="radio" name="dep" id="ddj" value="Dijon"/><label class="ch" for="ddj">🍷 Dijon</label></div>
+            <div class="ci"><input type="radio" name="dep" id="da" value="Autre"/><label class="ch" for="da">📍 Autre</label></div>
           </div>
         </div>
         <div class="fg-item" style="margin-bottom:16px;">
@@ -793,8 +793,8 @@ textarea.fi{min-height:90px;resize:vertical;}
       <div class="card-body">
         <p style="font-size:13px;color:var(--ink3);margin-bottom:14px;font-weight:600;">Cochez tout ce qui vous concerne <span style="color:var(--r1);">*</span></p>
         <div class="kg">
-          <div class="ki"><input type="checkbox" id="rv" name="regime" value="herbe"/><label class="kh" for="rv">🌿 Je mange de l'herbe</label></div>
-          <div class="ki"><input type="checkbox" id="ro" name="regime" value="tout"/><label class="kh" for="ro">🍖 Je mange de tout</label></div>
+          <div class="ki"><input type="checkbox" id="rv" name="regime" value="Herbeux"/><label class="kh" for="rv">🌿 Je mange de l'herbe</label></div>
+          <div class="ki"><input type="checkbox" id="ro" name="regime" value="Carnivor"/><label class="kh" for="ro">🍖 Je mange de tout</label></div>
         </div>
         <div class="fg-item" style="margin-top:18px;">
           <label class="fl" for="rdet">Allergies ou contraintes à préciser</label>
@@ -1131,7 +1131,7 @@ function submitForm(){
     regime:reg.join(', '),regime_details:v('rdet'),
     commentaire:v('com'),
     whatsapp:document.getElementById('wp').checked?'oui':'non',
-    paiement:document.getElementById('pay').checked?'confirme':'en_attente',
+    paiement:document.getElementById('pay').checked?'oui':'en_attente',
   };
   fetch('https://script.google.com/macros/s/AKfycbzBvxmUA2UZgKDf5jqhCW6TEJyR0lXm4hxaWKKW3KMQOaXA2wL_PKQn3cnm3fRL-lrvFg/exec',{
     method:'POST',
